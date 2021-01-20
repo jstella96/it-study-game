@@ -13,6 +13,8 @@
 
  	<mappers>
  		<mapper	resource="com/allstar/studygame/mybatis/member.xml" />
- 	
+ 		<mapper	resource="com/allstar/studygame/mybatis/shortword.xml" />
+ 		<mapper	resource="com/allstar/studygame/mybatis/longword.xml" />
+ 		<mapper	resource="com/allstar/studygame/mybatis/interview.xml" />
 	</mappers>
 </configuration>

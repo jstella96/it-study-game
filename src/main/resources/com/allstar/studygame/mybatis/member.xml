@@ -7,7 +7,7 @@
 <mapper namespace="com.allstar.studygame.mybatis.member">
 	
 	
-	<insert id="test" parameterType="java.util.Map">
+	<insert id="test3" parameterType="java.util.Map">
 		INSERT INTO test VALUES('KIM')  
 	</insert>
 
