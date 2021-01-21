@@ -43,7 +43,7 @@ private SqlSessionTemplate sqlMapper;
 		
 		model.addAttribute("serverTime", formattedDate );
 		sqlMapper.insert("test",map);
-		return "home";
+		return "Main/Home";
 	}
 	
 }
