@@ -10,5 +10,5 @@ import com.allstar.studygame.longword.service.LongWordService;
 public class LongWordServiceImpl implements LongWordService {
 	
 	@Resource(name="longWordDAO")
-	private LongWordDAO dao;
+	private LongWordDAOImpl dao;
 }

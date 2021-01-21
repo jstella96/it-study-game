@@ -10,5 +10,5 @@ import com.allstar.studygame.interview.service.InterviewService;
 public class InterviewServiceImpl implements InterviewService{
 	
 	@Resource(name="interviewDAO")
-	private InterviewDAO dao;
+	private InterviewDAOImpl dao;
 }

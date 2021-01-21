@@ -1,17 +1,5 @@
 package com.allstar.studygame.interview.service.impl;
 
-import javax.annotation.Resource;
+public interface InterviewDAO {
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository;
-
-import com.allstar.studygame.interview.service.InterviewService;
-
-@Repository("interviewDAO")
-public class InterviewDAO implements InterviewService  {
-	
-	@Resource(name="sqlSessoinTemplate")
-	private SqlSessionTemplate sqlMapper;
-	
-	
 }

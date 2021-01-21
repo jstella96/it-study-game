@@ -10,5 +10,5 @@ import com.allstar.studygame.shortword.service.ShortWordService;
 public class ShortWordServiceImpl implements ShortWordService {
 	
 	@Resource(name="shortWordDAO")
-	private ShortWordDAO dao;
+	private ShortWordDAOImpl dao;
 }
