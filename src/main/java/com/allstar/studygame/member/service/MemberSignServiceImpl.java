@@ -25,15 +25,15 @@ public class MemberSignServiceImpl implements MemberSignService{
 	@Override
 	public boolean isNicknameDuplicate(String nickname) {
 		//count 함수로 0 or 1 받아온다
-		int checkResult = dao.selectMemberId(nickname);
+		int checkResult = dao.selectMemberNickName(nickname);
 				
 		return checkResult== 0 ? true : false;
 	}
 
 	@Override
 	public void inputMember(Map map) {
-		// TODO Auto-generated method stub
 		
+		dao.insertMember(map);
 	}
 
 }

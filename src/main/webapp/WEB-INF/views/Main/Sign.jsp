@@ -126,7 +126,7 @@ $("#signBtn").click(function(){
 		return false;
 		
 	}else if(!nicknameDuplicateCheck || $("#nickname").val() != nicknameResult){
-
+		
 		alert("닉네임 중복체크를 해주세요");
 		return false;
 
@@ -144,7 +144,7 @@ $("#signBtn").click(function(){
 //닉네임 중복체크
 $("#nicknameDuplicateCheckBtn").click(function(){
 	
-	nickNameDuplicateCheckAjax()
+	nickNameDuplicateCheckAjax();
 	
 })
 //아이디 중복체크	
@@ -166,7 +166,7 @@ function  idDuplicateCheckAjax(){
 			if(result){
 				alert("이 아이디는 사용할 수 있습니다.");
 				idDuplicateCheck = true;
-				idResult = id;
+				idResult = $("#id").val();
 			}else{
 				alert("이 아이디는 사용할 수 없습니다.");
 				idDuplicateCheck = false;
@@ -188,13 +188,13 @@ function  nickNameDuplicateCheckAjax(){
 		url:"<c:url value="/sign/ajax"/>",//요청할 서버의 URL주소
 		type:'get',//데이타 전송방식(디폴트는 get방식) 
 		dataType:'text',//서버로 부터 응답 받을 데이타의 형식 설정
-		data: "nickname="+$("#nickname").val();
+		data: "nickname="+$("#nickname").val(),
 		success:function(data){//서버로부터 정상적인 응답을 받았을때 호출되는 콜백함수
 			var result = (data =='available' ? true : false);
 			if(result){
 				alert("이 닉네임은 사용할 수 있습니다.");
 				nicknameDuplicateCheck = true;
-				nicknameResult = nickname;
+				nicknameResult = $("#nickname").val();
 			}else{
 				alert("이 닉네임은 사용할 수 없습니다.");
 				nicknameDuplicateCheck = false;

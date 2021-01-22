@@ -16,7 +16,7 @@
 	
 	
 	<insert id="insertMember" parameterType="java.util.Map">
-	
+		INSERT INTO member_ VALUES(#{id},#{password},#{nickname},default,'character1.png')
 	</insert>
 	
 	<update id="updateMember" parameterType="java.util.Map">
@@ -35,13 +35,11 @@
 	
 
 	<select id="selectMemberId" parameterType="String" resultType="int">
-		
-		
+		SELECT COUNT(*) FROM member_ WHERE id=#{id}
 	</select>
 	
 	<select id="selectMemberNickName" parameterType="String" resultType="int">
-		
-		
+		SELECT COUNT(*) FROM member_ WHERE nickname=#{nickname}
 	</select>
 	
 
