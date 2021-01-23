@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<mapper namespace="com.allstar.studygame.mapper.quizMapper">
+	
+	<insert id="insertQuiz" parameterType="java.util.Map">
+		<choose>
+			<when test="gamecode == 1">
+				  INSERT INTO longword_quiz VALUES(0,#{categoryNo},#{quiz},#{quizInfo});
+			</when>
+			<when test="gamecode == 2">
+				  INSERT INTO shortword_quiz VALUES(0,#{categoryNo},#{quiz},#{quizInfo});
+			</when>
+			<otherwise>
+				  INSERT INTO interview_quiz VALUES(0,#{categoryNo},#{quiz},#{quizInfo});
+			</otherwise>
+		</choose>
+	</insert>
+
+	<delete id="deleteQuiz" parameterType="java.util.Map">
+		<choose>
+			<when test="gamecode == 1">
+				  DELETE FROM longword_quiz WHERE longword_quiz_no=#{quizNo}
+			</when>
+			<when test="gamecode == 2">
+				  DELETE FROM shortword_quiz WHERE shortword_quiz_no=#{quizNo}		
+			</when>
+			<otherwise>
+				  DELETE FROM interview_quiz WHERE interview_quiz_no=#{quizNo}		
+			</otherwise>
+		</choose>
+	</delete>
+	
+	<select id="selectQuizList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT R1.* FROM(
+		<choose>
+			<when test="gamecode == 1">
+				SELECT  longword_quiz_no AS  quiz_no,
+						category_no AS  category_no,
+						longword_quiz AS  quiz,
+				        longword_quiz_info AS  quiz_info
+				FROM longword_quiz
+			    WHERE category_no =#{categoryNo}
+			</when>
+			<when test="gamecode == 2">
+				SELECT  shortword_quiz_no AS  quiz_no,
+						category_no AS  category_no,
+						shortword_quiz AS  quiz,
+				        shortword_quiz_info AS  quiz_info
+				FROM shortword_quiz
+			    WHERE category_no =#{categoryNo}
+			</when>
+			<otherwise>
+				SELECT  interview_quiz_no AS  quiz_no,
+						category_no AS  category_no,
+						interview_quiz AS  quiz,
+				        interview_quiz_info AS  quiz_info
+				FROM interview_quiz
+			    WHERE category_no =#{categoryNo}
+			</otherwise>
+		</choose>
+		)R1 
+		<if test="searchWord != ''">
+	    	WHERE R1.quiz LIKE  CONCAT('%',#{searchWord},'%')
+	    </if>	
+		LIMIT 10 OFFSET 0
+	</select>
+	
+	
+</mapper>

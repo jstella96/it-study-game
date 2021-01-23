@@ -21,6 +21,9 @@
 
 <title>IT 3종 공부 게임</title>
 <style>
+body{
+font-family: 'Noto Sans KR', sans-serif;
+}
 h1{
 	font-family: 'Noto Sans KR', sans-serif;
 }a{

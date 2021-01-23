@@ -14,8 +14,8 @@
 		DELETE FROM quiz_category WHERE category_no=#{categoryNo}
 	</delete>
 	
-	<select id="selectQuizCategoryList" parameterType="java.util.Map" resultMap="java.util.Map">
-		SELECT * FROM member_ WHERE id=#{id}
+	<select id="selectQuizCategoryList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT *FROM quiz_category WHERE game_code = #{gamecode} AND id = #{id}
 	</select>
 	
 	

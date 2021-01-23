@@ -16,32 +16,32 @@ public class QuizPlusDAOImpl implements QuizPlusDAO{
 	
 	@Override
 	public List<Map> selectQuizList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sqlMapper.selectList("selectQuizList",map);
 	}
 
 	@Override
 	public Map selectQuiz(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sqlMapper.selectOne("selectQuiz",map);
 	}
 
 	@Override
 	public void insertQuiz(Map map) {
-		// TODO Auto-generated method stub
 		
+		sqlMapper.insert("insertQuiz",map);
 	}
 
 	@Override
 	public void updateQuiz(Map map) {
-		// TODO Auto-generated method stub
 		
+		sqlMapper.update("updateQuiz",map);
 	}
 
 	@Override
 	public void deleteQuiz(Map map) {
-		// TODO Auto-generated method stub
 		
+		sqlMapper.delete("deleteQuiz",map);
 	}
 
 }

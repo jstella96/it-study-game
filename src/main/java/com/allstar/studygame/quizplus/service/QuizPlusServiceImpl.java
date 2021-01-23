@@ -18,31 +18,30 @@ public class QuizPlusServiceImpl implements QuizPlusService{
 	@Override
 	public List<Map> getQuizs(Map map) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.selectQuizList(map);
 	}
 
 	@Override
 	public Map getQuiz(Map map) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.selectQuiz(map);
 	}
 
 	@Override
 	public void inputQuiz(Map map) {
-		// TODO Auto-generated method stub
+		dao.insertQuiz(map);
 		
 	}
 
 	@Override
 	public void modifyQuiz(Map map) {
-		// TODO Auto-generated method stub
 		
+		dao.updateQuiz(map);
 	}
 
 	@Override
 	public void deleteQuiz(Map map) {
-		// TODO Auto-generated method stub
-		
+		dao.deleteQuiz(map);
 	}
 }		
 	

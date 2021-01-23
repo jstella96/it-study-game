@@ -51,7 +51,7 @@ public class MemberMypageController {
 		
 		//회원수정프로세스 닉네임수정, 프로필사진수정 두가지 경우가 있다.
 		@RequestMapping(value = "modify", method = RequestMethod.POST)
-		public String MemberModifyProcess(@RequestParam Map map,HttpServletRequest req, Model model) {
+		public String memberModifyProcess(@RequestParam Map map,HttpServletRequest req, Model model) {
 			map.put("id",req.getSession().getAttribute("memberId").toString());
 			model.addAttribute("signDate", map.get("signDate"));
 			memberMypageService.modifyMember(map);
@@ -67,7 +67,7 @@ public class MemberMypageController {
 		
 		//회원가입 페이지 이동
 		@RequestMapping(value = "withdraw", method = RequestMethod.GET)
-		public String MemberModifyWithdraw() {
+		public String memberModifyWithdraw() {
 			return "Main/Home";
 		}//signGet()
 		

@@ -1,10 +1,12 @@
 package com.allstar.studygame.quizplus.web;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.allstar.studygame.quizplus.service.QuizCategoryService;
 import com.allstar.studygame.quizplus.service.QuizPlusService;
 
+
 @Controller
 @RequestMapping("/quizplus/")
 public class QuizCategoryController {
@@ -26,41 +29,33 @@ public class QuizCategoryController {
 	@Resource(name = "quizPlusService")
 	private QuizPlusService quizPlusService;
 	
-	//문제관리 페이지로 이동
+	
+	//1]문제 카테고리 추가
 	@RequestMapping(value = "category", method = RequestMethod.POST)
-	public String inputQuizCategory(@RequestParam Map map, HttpServletRequest req, Model model) {
+	public String inputQuizCategory(@RequestParam Map map) {
 		
 		quizCategoryService.inputQuizCategory(map);
-		
 		return "QuizPlus/QuizPlus.game";
 	}//
-	//문제관리 페이지로 이동
-	@RequestMapping(value = "category", method = RequestMethod.POST)
-	public String deleteQuizCategory(@RequestParam Map map, HttpServletRequest req, Model model) {
-		
-		
-		return "QuizPlus/QuizPlus.game";
-	}//
+
 	
-	@RequestMapping(value="/category/change",produces = "text/html; charset=UTF-8")
+	//2]문제 카테고리 삭제
+	@RequestMapping(value = "category/delete", method = RequestMethod.POST)
+	public String deleteQuizCategory(@RequestParam Map map) {
+		
+		quizCategoryService.deleteQuizCategory(map);
+		return "QuizPlus/QuizPlus.game";
+	}//
+
+	//3]문제 카테고리 바꾸기
+	@RequestMapping(value="category/change",produces = "text/html; charset=UTF-8")
 	@ResponseBody
-	public String ajaxCourse(@RequestParam String course) {
-		JSONObject obj = new JSONObject();
-		switch(course) {
-			case "java":
-				obj.put("j01", "자바");
-				obj.put("j02", "JSP");
-				obj.put("j03", "스프링");
-				break;
-			case "dotnet":
-				obj.put("d01", "C#");
-				obj.put("d02", "ASP.NET");
-				obj.put("d03", "WPF4");				
-				break;
-			default:
-				obj.put("i01", "라즈베리 파이");
-				obj.put("i02", "파이썬");				
-		}
-		return obj.toJSONString();
+	public String getCategoryListAjax(@RequestParam Map map) {
+	
+		/*JSONArray의 정적 메소드인 toJSONString(List계열 컬렉션) 사용*/
+		List<Map> categoryList= quizCategoryService.getQuizCategorys(map);
+		
+		
+		return JSONArray.toJSONString(categoryList);
 	}/////////////////////
 }
