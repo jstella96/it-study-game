@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<mapper namespace="com.allstar.studygame.mapper.quizCategoryMapper">
+	
+	<insert id="insertQuizCategory" parameterType="java.util.Map">
+		INSERT INTO quiz_category VALUES(0,#{id},#{category},#{gamecode});
+	</insert>
+
+	<delete id="deleteQuizCategory" parameterType="java.util.Map">
+		DELETE FROM quiz_category WHERE category_no=#{categoryNo}
+	</delete>
+	
+	<select id="selectQuizCategoryList" parameterType="java.util.Map" resultMap="java.util.Map">
+		SELECT * FROM member_ WHERE id=#{id}
+	</select>
+	
+	
+</mapper>

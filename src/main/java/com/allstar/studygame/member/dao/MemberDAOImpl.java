@@ -51,4 +51,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlMapper.selectOne("selectMemberNickName",nickname);
 	}
 
+	@Override
+	public int selectMemberLoginCheck(Map map) {
+		// TODO Auto-generated method stub
+		return sqlMapper.selectOne("selectMemberLoginCheck",map);
+	}
+
 }

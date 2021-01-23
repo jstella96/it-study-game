@@ -1,4 +1,4 @@
-package com.allstar.studygame.member.service;
+package com.allstar.studygame.member.service.impl;
 
 import java.util.Map;
 
@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.allstar.studygame.member.dao.MemberDAO;
+import com.allstar.studygame.member.service.MemberSignService;
 
 @Service("memberSignService")
 public class MemberSignServiceImpl implements MemberSignService{

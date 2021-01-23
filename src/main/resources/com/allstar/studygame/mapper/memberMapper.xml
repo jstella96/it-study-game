@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
-<mapper namespace="com.allstar.studygame.mapper.MemberMapper">
+<mapper namespace="com.allstar.studygame.mapper.memberMapper">
 	
 	<resultMap type="memberDTO" id="memberDTOResult">
 			<result property="id" column="id"/>
@@ -20,20 +20,31 @@
 	</insert>
 	
 	<update id="updateMember" parameterType="java.util.Map">
-	
+		UPDATE member_ SET 
+		<choose>
+			<when test="nickname != null">
+			    nickname=#{nickname}
+			</when>
+			<otherwise>
+				profile_img=#{profileImg}
+			</otherwise>
+		</choose>
+		WHERE  id=#{id}
 	</update>
 	
 	<delete id="deleteMember" parameterType="String">
-	
+		DELETE FROM member_ WHERE id=#{id}
 	</delete>
 	
 	
-	<select id="PackNoticeSelectList" parameterType="String" resultMap="memberDTOResult">
-		
-		
+	<select id="selectMember" parameterType="String" resultMap="memberDTOResult">
+		SELECT * FROM member_ WHERE id=#{id}
+	</select>
+
+	<select id="selectMemberLoginCheck" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM member_ WHERE id=#{id} AND password=#{password}
 	</select>
 	
-
 	<select id="selectMemberId" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM member_ WHERE id=#{id}
 	</select>

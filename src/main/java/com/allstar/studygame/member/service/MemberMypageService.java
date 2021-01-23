@@ -7,6 +7,6 @@ public interface MemberMypageService {
 		//회원정보 수정
 		void modifyMember (Map map);
 		//회원정보 삭제
-		void deleteMember (Map map);
+		void deleteMember (String id);
 
 }

@@ -31,6 +31,7 @@
 		height: 85vh;
 		background: linear-gradient(to bottom, #9966FF, #99CCFF);
 		text-align: center;
+		margin-bottom: 2vh;
 	}.studyGameHome-content{
 		margin-top:15%; background-color: white; 
 		 border-radius: 20px;
@@ -55,7 +56,7 @@
 <body>
 	<div class="container-fluid">
 	  <div class="row">
-	  	<div class="col-md-10 col-md-offset-1 projTitle">
+	  	<div class="col-xs-10 col-xs-offset-1 projTitle">
 	  		<h1>IT STUDY GAME</h1>
 	  	</div>
 	  </div>
@@ -111,8 +112,8 @@ var idResult = "";
 
 //프론트 유효성 체크
 $("#signBtn").click(function(){
-	if(!($("#nickname").val().length >= 2 &&  $("#nickname").val().length <= 20)){
-		alert("닉네임은 2-20자 사이로 입력해 주세요");
+	if(!($("#nickname").val().length >= 2 &&  $("#nickname").val().length <= 100)){
+		alert("닉네임은 2-10자 사이로 입력해 주세요");
 		return false;
 		
 	}else if(!($("#id").val().length >= 4 &&  $("#id").val().length <= 20)){

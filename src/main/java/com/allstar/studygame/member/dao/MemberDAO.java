@@ -14,6 +14,7 @@ public interface MemberDAO {
 	 void deleteMember(String id);
 	 MemberDTO selectMember(String id);
 	 
+	 int selectMemberLoginCheck(Map map);
 	 int selectMemberId(String id);
 	 int selectMemberNickName(String nickname);
 }

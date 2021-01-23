@@ -24,13 +24,13 @@
 	}
 	.projTitle{
 		margin-top: 2vh;
-		
 	}        
 	.studyGameHome{
 		margin-top: 2vh;
 		height: 85vh;
 		background: linear-gradient(to bottom, #9966FF, #99CCFF);
 		text-align: center;
+		margin-bottom: 2vh;
 	}.studyGameHome-content{
 		margin-top:15%; background-color: white; 
 		 border-radius: 20px;
@@ -50,7 +50,7 @@
 <body>
 	<div class="container-fluid">
 	  <div class="row">
-	  	<div class="col-md-10 col-md-offset-1 projTitle">
+	  	<div class="col-xs-10 col-xs-offset-1 projTitle">
 	  		<h1>IT STUDY GAME</h1>
 	  	</div>
 	  </div>
@@ -65,15 +65,16 @@
 					  <div class="form-group">
 					    <label for="inputEmail3" class="col-md-2 control-label">아이디</label>
 					    <div class="col-md-10">
-					      <input type="text" class="form-control" id="id" >
+					      <input type="text" class="form-control" id="id" name="id" >
 					    </div>
 					  </div>
 					  <div class="form-group">
 					    <label for="inputPassword3" class="col-md-2  control-label">비밀번호</label>
 					    <div class="col-md-10">
-					      <input type="password" class="form-control" id="password">
+					      <input type="password" class="form-control" id="password" name="password">
 					    </div>
 					  </div>
+					  <span style="color:red">${error}</span>
 					  <div class="form-group">
 					    <div class="col-md-10 col-md-offset-1 loginBtns">
 					      <button type="submit" id="loginBtn" class="btn btn-default col-md-5">로그인</button>
@@ -88,6 +89,9 @@
 	  </div><!-- /row -->
 	</div><!-- /container-fluid -->
 <script>
+//로그인 에러 
+var error = '${error}';
+
 //프론트 유효성 체크
 $("#loginBtn").click(function(){
 	if($("#id").val().length < 1){
@@ -101,8 +105,7 @@ $("#loginBtn").click(function(){
 		return false;
 		
 	}else{
-		
-		console.log('ajsa ');
+		console.log("유효성 체크완료.이상없음");
 	} 
 	
 });
