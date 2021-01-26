@@ -8,20 +8,21 @@
 		<div class="col-xs-12 nickname">
 		${sessionScope.memberNickname}
 		</div>
-	</div>
-  		<!-- 왼쪽 메뉴 부분 -->
+	</div>	
+
+  	<!-- 왼쪽 메뉴 부분 -->
    	<ul class="menu_ul">
    		<li>
-   			<a href="<c:url value="/longword/page"/>" class="btn"  style="top:38%">
-  				<span class="glyphicon glyphicon-education"></span>긴글연습</a>
+   			<button  class="btn gameStartBtn" data-gamecode="01" style="top:38%">
+  				<span class="glyphicon glyphicon-education"></span>긴글연습</button>
   			</li>
   			<li >
-   			<a href="<c:url value="/shortword/page"/>" class="btn" style="top:48%;">
-  				<span class="glyphicon glyphicon-education"></span>짧은글연습</a>
+   			<button class="btn gameStartBtn" data-gamecode="02" style="top:48%;">
+  				<span class="glyphicon glyphicon-education"></span>짧은글연습</button>
   			</li>
   			<li >
-   			<a href="<c:url value="/interview/page"/>" class="btn" style="top:58%">
-  				<span class="glyphicon glyphicon-education"></span>개념완성</a>
+   			<button class="btn gameStartBtn" data-gamecode="03" style="top:58%">
+  				<span class="glyphicon glyphicon-education"></span>개념완성</button>
   			</li>
   			<li>
    			<a href="<c:url value="/record/page"/>" class="btn" style="top:68%">

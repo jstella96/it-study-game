@@ -75,8 +75,8 @@ font-size : 20px;
 		             <form method="post" action="<c:url value='/quizplus/category/delete'/>">
 							<div class="col-md-3">
 								<select name="gamecode" id="modalGamecode" class="form-control">
-											<option value="1">긴글게임</option>
-											<option value="2">짧은글게임</option>
+											<option value="1">긴글연습</option>
+											<option value="2">짧은글연습</option>
 											<option value="3">개념완성</option>
 								</select>
 							</div>
@@ -96,8 +96,8 @@ font-size : 20px;
 					<form method="post" action="<c:url value='/quizplus/category'/>" autocomplete="off" >
 						<div class="col-md-3">
 							<select name="gamecode" class="form-control">
-								<option value="1">긴글게임</option>
-								<option value="2">짧은글게임</option>
+								<option value="1">긴글연습</option>
+								<option value="2">짧은글연습</option>
 								<option value="3">개념완성</option>
 							</select>
 						</div>
@@ -142,7 +142,7 @@ font-size : 20px;
 		
 	}else if($("#gamecode").val() == 1 &&  $("#quiz").val().length > 50){
 	
-		alert("긴 글 게임의 문제는 50자 이내로 작성 되어야 합니다.");
+		alert("긴 글 연습의 문제는 50자 이내로 작성 되어야 합니다.");
 		return false;
 		
 	}else if($("#quizInfo").val().length > 1000){
@@ -152,12 +152,12 @@ font-size : 20px;
 		
 	}else if($("#gamecode").val() == 1 &&  $("#quiz").val().length > 50){
 	
-		alert("긴 글 게임의 문제는 50자 이내로 작성 되어야 합니다.");
+		alert("긴 글 연습의 문제는 50자 이내로 작성 되어야 합니다.");
 		return false;
 		
 	}else if($("#gamecode").val() == 2 &&  $("#quiz").val().length > 20){
 	
-		alert("짧은 글 게임의 문제는 20자 이내로 작성 되어야 합니다.");
+		alert("짧은 글 연습의 문제는 20자 이내로 작성 되어야 합니다.");
 		return false;
 		
 	}else if($("#gamecode").val() == 3 &&  $("#quiz").val().length > 1000){
@@ -218,7 +218,7 @@ function categoryChangeAjax(gamecode,category){
 	data:{gamecode:$(gamecode).val(),id:"${sessionScope.memberId}"},
 	dataType:'json',
 	success:function(data){
-		//{'i01':'라즈베리 파이','i02':'파이썬'}
+		
 		var options="";
 		$.each(data,function(index,element){
 		    	 options+="<option value='"+element["category_no"]+"'>"+element["category_name"]+"</option>";				

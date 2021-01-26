@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,7 +32,7 @@ cursor: pointer;
 	border : 5px solid #99CCFF ; background: white; width: 100%;
 }.projTitle{
 	margin-top: 2vh;
-} .studyGameHome{
+}.studyGameHome{
 	height: 100%;
 	margin-top: 2vh;
 	height: 85vh;
@@ -57,13 +56,13 @@ cursor: pointer;
     list-style: none;
     padding-left: 0px;
     text-align: center;
-}.studyGame-menu .menu_ul a{
+}.studyGame-menu .menu_ul .btn{
     width:80%; position:absolute; left:20%;
     border-radius: 40px 0 0 40px;
     background-color: #9999FF;
     font-size: 15px;color:#444444;
     font-family: 'Noto Sans KR', sans-serif;
-}.studyGame-menu .menu_ul a:hover{
+}.studyGame-menu .menu_ul .btn:hover{
     color:white;background-color: #99B5FF;
 }.studyGame-menu .profile{
 	margin-top: 8%;
@@ -73,6 +72,30 @@ cursor: pointer;
 	font-size:18px; color: black;
 	margin-top: 5%;text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
+<!--게임 시작 버튼 관련 모달 스타일-->
+<style>
+#gameStartModal .gameStartModalHeader{
+	background: linear-gradient(to bottom, #9966FF, #99CCFF);
+	color:white;
+	padding:1px;
+	text-align: center;
+}#gameStartModal .gameStartModalHeader small{
+  font-size: 12px;
+}#gameStartModal .gameStartModalHeader h4{
+  margin-bottom: 0;
+}#gameStartModal { 
+ 	top : 20%; 
+}#gameStartModal .modal-dialog{
+ 	 width: 40%
+}#gameStartModal modal-footer{
+	padding: 1px;
+}#gameStartModal  .gameStartModalBody {
+	padding-top: 40px;
+	padding-bottom: 50px;
+}#gameStartModal  .gameStartModalBody .gameCategoryLabel{
+	width: 40%; font-size:15px
 }
 </style> 
 </head>
@@ -98,11 +121,94 @@ cursor: pointer;
 					<tiles:insertAttribute name="body"/>
 					
 		    	<!--</div>/studyGame-main_content _ 오른쪽 테두리 내부 -->
-	    	</div>
-	    </div><!-- /studyGame-main 오른쪽 본게임 -->
-    </div><!-- /study Game 실제 게임판 -->
+	    
+	 </div><!-- /studyGame-main 오른쪽 본게임 -->
+   </div><!-- /study GameHome 실제 게임판 -->
   </div><!-- /row -->
 </div><!-- /container-fluid -->
+ <!-- 모달 -->
+<div class="modal fade" id="gameStartModal" data-backdrop="false" >
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header gameStartModalHeader">
+               	<h4 id="modal-gameName">에러</h4>
+               	<small><span id="modal-quizCount">0</span>개 미만의 퀴즈가 들어있는 카테고리는 반복된 퀴즈가 나오게 됩니다.</small> 
+            </div>
+       <form id="gameStartForm" action="#">
+	      <div class="modal-body gameStartModalBody" id="" style="text-align: left; margin-left: 30%">
+		 		저장된 카테도리가 없습니다.
+		  </div>   	
+	       <div class="modal-footer"> 
+					<button type="submit" class="btn btn-default" id="modal-gameStartBtn">게임시작</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	       </div>
+       </form>   
+        </div>
+    </div>
+</div>
+<!-- /모달 -->
+<script>
+	$(".gameStartBtn").click(function(){
+		 gamecode = $(this).data('gamecode');
 
+		if(gamecode=='01'){
+			$("#modal-quizCount").html('40');
+			$("#modal-gameName").html('긴 글 연습')
+			$("#gameStartForm").attr("action", "<c:url value='/longword/page'/>");
+		}else if(gamecode=='02'){
+			$("#modal-quizCount").html('20');
+			$("#modal-gameName").html('짧은 글 연습');
+			$("#gameStartForm").attr("action", "<c:url value='/shortword/page'/>");
+		}else{
+			$("#modal-quizCount").html('40');
+			$("#modal-gameName").html('개념 완성');
+			$("#gameStartForm").attr("action", "<c:url value='/interview/page'/>");
+		}
+		
+		 gameStartCategoryAjax(gamecode)
+		$('#gameStartModal').modal()
+		
+	});
+	
+	$("#modal-gameStartBtn").click(function(){
+		
+		if(!$('.gameCategoryLabel input:radio[name=categoryNo]').is(':checked')){
+			alert("카테고리를 한개 이상 선택해주세요.");
+			return false;
+		}
+		
+	})
+	
+	function gameStartCategoryAjax(gamecode){
+		
+		//ajax로 요청]
+		$.ajax({
+		url:"<c:url value="/quizplus/category/change"/>",	
+		data:{gamecode:gamecode,id:"${sessionScope.memberId}"},
+		dataType:'json',
+		success:function(data){
+			console.log(data)
+			
+			var radios="";
+			$.each(data,function(index,element){
+			    				
+			    	 radios+= "<label class='gameCategoryLabel'>"
+			    	 radios+= "<input type='radio' name='categoryNo' value="+element["category_no"]+">"
+			    	 radios+= element["category_name"]+"</label>"
+			    	 ;
+			    	 
+			});	
+			$(".gameStartModalBody").html(radios);
+			
+		},			
+		error:function(request,error){
+			console.log("상태코드:",request.status);
+			console.log("에러:",error);
+			
+		}
+		});		
+		
+	}
+</script>
 </body>
 </html>

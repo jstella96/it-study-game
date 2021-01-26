@@ -60,7 +60,7 @@ public class QuizPlusController {
 			String gamecode = map.get("gamecode").toString();
 			/*아래 정보들 저장*/
 			model.addAttribute("gamecode",map.get("gamecode"));
-			model.addAttribute("gamename",gamecode.equals("1") ? "긴 글 게임" : gamecode.equals("2") ? "짧은 글 게임":"개념 완성" );
+			model.addAttribute("gamename",gamecode.equals("1") ? "긴 글 연습" : gamecode.equals("2") ? "짧은 글 연습":"개념 완성" );
 			model.addAttribute("categoryList",categoryList);
 			
 			return "QuizPlus/QuizList.game";

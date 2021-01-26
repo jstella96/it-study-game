@@ -6,128 +6,89 @@ canvas{
    background : gray;
    display:block;
    margin : 0 auto;
- 	}
-table tr th{
+}table tr th{
    text-align : center;
    padding : 10px
-  }
- a{
- color:white;
- }
- a:link{
- color:#444444;
- }
- a:visited{
- color:#444444;
- }      	
-</style>
+}.longwordGame-main-content{
+	background-color: white; 
+	border-radius: 20px;
+	border:5px solid rgb(230,230,230);
+	text-align: center;
+	width: 94%;
+	margin: 3% 3%;
+	height: 60vh;
+}#containerMain{
+	margin-top:15px; padding :10px 0;
+	border-radius: 20px;
+	color: white;  background: linear-gradient(to right, #9966FF, #99AAFF);
+	font-weight: bolder;font-size:xx-large ;
+}#bottomground{
+	margin-top:15px; padding :10px 0;
+	border-radius: 15px;background-color: rgb(200, 200, 200); 
+}#infoBox{
+	background-color: white; 
+	border-radius: 20px;
+	border:5px solid rgb(230,230,230);
+	text-align: center;
+	width: 94%;
+	margin: 0 3%;
+ 	
+}</style>
 </head>
 <body>
-<!-- 메인 내용 -->
-<div style="padding-top: 5% ;padding-bottom: 5%"  class = "col-10 col-md-offset-1" >
-	 <div class="col-10 col-md-offset-1 center">
-        <h2 class="section-title">&nbsp&nbsp&nbsp긴글연습</h2>
-      </div>
-     
+<div class="row">
+	<div class="longwordGame-main-content col-xs-12">
+		<table class="col-xs-12 text-center">
+			<tr>
+                <th>진행도<span class = "sp">0</span></th>
+                <th>현재타수<span class = "sp">0</span></th>
+                <th>최고타수<span class = "sp">0</span></th>
+                <th>목표타수<span class = "sp">0</span></th>
+                <th>정확도<span class = "sp">0</span></th>
+	        </tr>
+	        <tr> 	
+                <th>
+                    <canvas id="my1" width="150" height="15"></canvas>
+                </th>
+                <th>
+                    <canvas id="my2" width="150" height="15"></canvas>
+                </th>
+                <th>
+                    <canvas id="my3" width="150" height="15"></canvas>
+                </th>
+                 <th>
+                    <canvas id="my5" width="150" height="15"></canvas>
+                </th>
+                <th>
+                    <canvas id="my4" width="150" height="15"></canvas>
+                </th>
+	         </tr>
+	     </table>
+ 
+	     <div class="col-xs-12 text-center" name="containerMain" id="containerMain" >${quizList[0].QUIZ}</div>
 		
-		<table class="table col-10 col-sm-offset-1  text-center" style= "width : 90%  ; height: 100% ;background-color: rgba(245,245,245,0.9) ;margin-top: -50px">
-		
-			 <tr  >
-				<th rowspan ="2" style="width: 15% ; background: linear-gradient(to bottom, #9966FF, #99CCFF); position:relative; ">
-					<div style="padding-top: 8% ; padding-bottom :7%;">
-					<img style=" border : 5px solid #99CCFF ; background: white; width: 88%;" src= "<c:url value="/resources/images/character/character1.png"/>" class="img-circle">
-					</div>
-					<div class="col-xs-8"  style="background-color: white; width: 100% ;height:4% ; border-radius: 15px ;font-size: 1.7em; color: black;" >
-					김길동
-					</div>
-					<a href="<c:url value="/GameRoom/LongWordGame.do"/>" class="btn" style="  color:white; width:80% ; position:absolute;left:20%; top:40%; border-radius: 20px  0  0 20px; background-color: #99B5FF ;">
-    				<span class="glyphicon glyphicon-education" ></span>긴글연습
-    				</a>
-    				<a href="<c:url value="/GameRoom/ShotWordGame.do"/>" class="btn" style=" width:80% ; position:absolute;left:20%; top:50%; border-radius: 20px  0  0 20px; background-color: #9999FF ;">
-    				<span class="glyphicon glyphicon-education"  ></span>짧은글연습
-    				</a>
-    				<a href="#" class="btn" style=" width:80% ; position:absolute;left:20%; top:60%; border-radius: 20px  0  0 20px; background-color: #9999FF ;">
-    				<span class="glyphicon glyphicon-education"  ></span>개발중
-    				</a>
-    				<a href="#" class="btn" style=" width:80% ; position:absolute;left:20%; top:70%; border-radius: 20px  0  0 20px; background-color: #9999FF ;">
-    				<span class="glyphicon glyphicon-education"  ></span>순위보기
-    				</a>
-    				<a href="<c:url value="/GameRoom/QuizPlus.do"/>" class="btn" style=" width:80% ; position:absolute;left:20%; top:80%; border-radius: 20px  0  0 20px; background-color: #9999FF; ">
-    				<span class="glyphicon glyphicon-education" ></span>문제추가
-    				</a>
-					
-						
-					
-					
-				</th>
-				<th style="border-top : none;">
-		  		  
-				<div style="padding: 65px;  margin:65px;  background-color: white; width: 90% ;height: 60% ;border:5px solid rgb(230,230,230); border-radius: 20px">  
-						<table class="col-12 text-center" style= " margin-top : -30px;">
-						<tr>
-			                <th>진행도<span class = "sp">0</span></th>
-			                <th>현재타수<span class = "sp">0</span></th>
-			                <th>최고타수<span class = "sp">0</span></th>
-			                <th>목표타수<span class = "sp">0</span></th>
-			                <th>정확도<span class = "sp">0</span></th>
-			            </tr>
-			            <tr >
-			            	
-			                <th>
-			                    <canvas id="my1" width="200" height="15"></canvas>
-			                </th>
-			                <th>
-			                    <canvas id="my2" width="200" height="15"></canvas>
-			                </th>
-			                <th>
-			                    <canvas id="my3" width="200" height="15"></canvas>
-			                    
-			                </th>
-			                 <th>
-			                    <canvas id="my5" width="200" height="15"></canvas>
-			                </th>
-			                <th>
-			                    <canvas id="my4" width="200" height="15"></canvas>
-			                </th>
-			            </tr>
-			        </table>
-					
-			   
-			
-			
-			        
-			     <div class="col-12 text-center" name="containerMain"  style = "padding :10px; margin:10px; border-radius: 20px; color: white;  background: linear-gradient(to right, #9966FF, #99AAFF); font-weight: bolder;font-size:xx-large ;">${list[0].QUIZ}</div>
+	    <div class="col-xs-12 text-center" id='bottomground'>
+			<input id='enter' onkeyup='enterkey();' type="text" value="" style="height: 30px; font-size : xx-large;" />
+		</div>
+		<div class="col-xs-12 text-center" style="margin-top: 30px" >
+		    
+			    <div name="containerNext"  style="font-size : x-large;">${quizList[1].QUIZ}</div><br/>
+				<div name="containerNext"  style="font-size : x-large;">${quizList[2].QUIZ}</div><br/>
+				<div name="containerNext"  style="font-size : x-large;">${quizList[3].QUIZ}</div><br/>
 				
-			    <div class="col-12 text-center" id='bottomground' style="padding :10px; margin:10px;border-radius: 15px; background-color: rgb(200, 200, 200); ">
-					<input id='enter' onkeyup='enterkey();' type="text" value="" style="height: 30px; font-size : xx-large;" />
-				</div>
-				
-			 
-			    <div class="col-12 text-center" style="margin-top: 30px" >
-			    
-				    <div name="containerNext"  style="font-size : x-large;">${list[1].QUIZ}</div><br/>
-					<div name="containerNext"  style="font-size : x-large;">${list[2].QUIZ}</div><br/>
-					<div name="containerNext"  style="font-size : x-large;">${list[3].QUIZ}</div><br/>
-					
-			    </div>
-				
+		</div>
+	</div>
+</div><!-- row -->			  		 	
+<div class="row">			
+	<div id="infoBox" class="col-xs-12">  	
+ 		<div  style="height :12vh; ;position: relative; ">
+			<span id='infoicon' style = " position:absolute;  left:15px; top:15px; font-weight: 30px " class="glyphicon glyphicon-search" aria-hidden="true"></span>	
+			<span id="infoDiv" style = "font-size :1.3em;">${quizList[0].INFO}</span>
+		 </div>
+	 </div>		
+</div>				
 
-				  </div>		  		 	
-					
-				<div  style=" margin: -10px 20px 65px 65px; padding: -10px 20px 65px 65px;background-color: white; width: 90% ;height: 20% ;border:5px solid rgb(230,230,230); border-radius: 20px">  
-				<div  style=" margin: 30px; padding:  30px ;position: relative; ">
-				<span id='infoicon' style = " position:absolute;  left:7px; top:5px; font-weight: 30px " class="glyphicon glyphicon-search" aria-hidden="true"></span>	
-				<span id="infoDiv" style = "font-size :1.3em;"> ${list[0].INFO} </span>
-				 </div>
-				</div>		
-					
-						
-				</th>
-			 </tr>
-					
-		</table>
-	
- </div>
+
  
 <script>
 	
@@ -139,7 +100,7 @@ table tr th{
  
    	 var arr = new Array();
    	 var arrinfo = new Array();
-   	<c:forEach var="item" items="${list}">
+   	<c:forEach var="item" items="${quizList}">
     arr.push("${item.QUIZ}");
     arrinfo.push("${item.INFO}");
     </c:forEach>
