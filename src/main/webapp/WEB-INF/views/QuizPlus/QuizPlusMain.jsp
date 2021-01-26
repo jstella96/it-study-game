@@ -15,14 +15,16 @@ border: 0px;
 font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
-<div class="row">
-	<div class="quizPlusMainBtns">
-		<a href="<c:url value="/quizplus/page"/>" class="btn btn-info">문제 추가</a>
-		<br>
-		<a href="<c:url value="/quizplus/quizs?gamecode=1&id=${sessionScope.memberId}"/>" class="btn btn-info">긴 글 연습 문제집</a>
-		<br>
-		<a href="<c:url value="/quizplus/quizs?gamecode=2&id=${sessionScope.memberId}"/>" class="btn btn-info">짧은 글 연습 문제집</a>	
-		<br>
-		<a href="<c:url value="/quizplus/quizs?gamecode=3&id=${sessionScope.memberId}"/>" class="btn btn-info">개념완성 문제집</a>
+<div class="studyGame-main-content">
+	<div class="row">
+		<div class="quizPlusMainBtns">
+			<a href="<c:url value="/quizplus/page"/>" class="btn btn-info">문제 추가</a>
+			<br>
+			<a href="<c:url value="/quizplus/quizs?gamecode=1&id=${sessionScope.memberId}"/>" class="btn btn-info">긴 글 연습 문제집</a>
+			<br>
+			<a href="<c:url value="/quizplus/quizs?gamecode=2&id=${sessionScope.memberId}"/>" class="btn btn-info">짧은 글 연습 문제집</a>	
+			<br>
+			<a href="<c:url value="/quizplus/quizs?gamecode=3&id=${sessionScope.memberId}"/>" class="btn btn-info">개념완성 문제집</a>
+		</div>
 	</div>
 </div>

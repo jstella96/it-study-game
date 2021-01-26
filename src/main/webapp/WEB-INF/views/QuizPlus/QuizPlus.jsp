@@ -22,14 +22,14 @@ border-radius: 5px;
 font-size : 20px;
 }
 </style>
-
-<div class="row col-md-8 col-md-offset-2" style="margin-top:12%">
-   <form action="<c:url value="/quizplus/quiz"/>" method = "post">
+<div class="studyGame-main-content">
+	<div class="row col-md-8 col-md-offset-2" style="margin-top:12%">
+	   <form action="<c:url value="/quizplus/quiz"/>" method = "post">
 			<div class="col-md-3">
 				<select name="gamecode" id="gamecode" class="form-control">
-							<option value="1">긴글게임</option>
-							<option value="2">짧은글게임</option>
-							<option value="3">개념완성</option>
+						<option value="1">긴글게임</option>
+						<option value="2">짧은글게임</option>
+						<option value="3">개념완성</option>
 				</select>
 			</div>
 			<div class="col-md-4">	
@@ -57,63 +57,66 @@ font-size : 20px;
 			<div class="col-md-12 quizPlusBtns" align="right">
 		   		  <button id="categoryModalBtn" type="button" class="btn btn-info">카테고리</button>
 		   		  <button type="submit" id="quizSubmitBtn" class="btn btn-info">등록</button>
-		     </div>		
+		    </div>		
 		</form>
 	</div>
-	<!--카테고리 추가 모달창 -->
-	<div class="modal fade" id="categoryModal" data-backdrop="false" >
-	    <div class="modal-dialog modal-lg" >
-	        <div class="modal-content">
-	            <div class="modal-header">
-	               	카테고리 관리
-	            </div>
-	            <div class="modal-body">
-	            	<div class="categoryModalBox">
-			             <form method="post" action="<c:url value='/quizplus/category/delete'/>">
-								<div class="col-md-3">
-									<select name="gamecode" id="modalGamecode" class="form-control">
-												<option value="1">긴글게임</option>
-												<option value="2">짧은글게임</option>
-												<option value="3">개념완성</option>
-									</select>
-								</div>
-								<div class="col-md-4">	
-									<select name="categoryNo" id="modalCategory" class="form-control">
-												
-									</select>
-									
-								</div>
-								<input  id="id" name="id"  type="hidden" value="${sessionScope.memberId}" />
-								<div align="left">
-								<button type="submit" class="btn btn-default">삭제</button>
-								</div>
-						</form>	
-					</div>
-					<div class="categoryModalBox">
-						<form method="post" action="<c:url value='/quizplus/category'/>" autocomplete="off" >
+</div>
+	
+	
+<!--카테고리 추가 모달창 -->
+<div class="modal fade" id="categoryModal" data-backdrop="false" >
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+            <div class="modal-header">
+               	카테고리 관리
+            </div>
+            <div class="modal-body">
+            	<div class="categoryModalBox">
+		             <form method="post" action="<c:url value='/quizplus/category/delete'/>">
 							<div class="col-md-3">
-								<select name="gamecode" class="form-control">
-									<option value="1">긴글게임</option>
-									<option value="2">짧은글게임</option>
-									<option value="3">개념완성</option>
+								<select name="gamecode" id="modalGamecode" class="form-control">
+											<option value="1">긴글게임</option>
+											<option value="2">짧은글게임</option>
+											<option value="3">개념완성</option>
 								</select>
 							</div>
 							<div class="col-md-4">	
-								<input class="form-control" id="modalCategoryInput" name="category" type="text" value="" />
-								<input  id="id" name="id"  type="hidden" value="${sessionScope.memberId}" />
+								<select name="categoryNo" id="modalCategory" class="form-control">
+											
+								</select>
+								
 							</div>
+							<input  id="id" name="id"  type="hidden" value="${sessionScope.memberId}" />
 							<div align="left">
-								<button type="submit" id="modalCategorySubmitBtn" class="btn btn-default">추가</button>
+							<button type="submit" class="btn btn-default">삭제</button>
 							</div>
-						</form>	
-					</div>   
-			 </div>
-	         <div class="modal-footer">
-	      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	          </div>
-	        </div>
-	    </div>
-	</div><!--/모달창 -->
+					</form>	
+				</div>
+				<div class="categoryModalBox">
+					<form method="post" action="<c:url value='/quizplus/category'/>" autocomplete="off" >
+						<div class="col-md-3">
+							<select name="gamecode" class="form-control">
+								<option value="1">긴글게임</option>
+								<option value="2">짧은글게임</option>
+								<option value="3">개념완성</option>
+							</select>
+						</div>
+						<div class="col-md-4">	
+							<input class="form-control" id="modalCategoryInput" name="category" type="text" value="" />
+							<input  id="id" name="id"  type="hidden" value="${sessionScope.memberId}" />
+						</div>
+						<div align="left">
+							<button type="submit" id="modalCategorySubmitBtn" class="btn btn-default">추가</button>
+						</div>
+					</form>	
+				</div>   
+		 </div>
+         <div class="modal-footer">
+      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    </div>
+</div><!--/모달창 -->
 <script>
 /*유효성 체크*/
  $("#quizSubmitBtn").click(function(){

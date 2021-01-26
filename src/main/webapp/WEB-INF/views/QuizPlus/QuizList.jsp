@@ -25,37 +25,38 @@
 }
 </style>
 
-
-<div class="row">
-	<div class="searchDiv col-md-12">
-		<form class="form-inline"  autocomplete="off">
-			<div class="form-group">
-				<select name="categoryNo" id="category" class=" form-control">
-					<c:forEach var="item" items="${categoryList}" varStatus="loop">
-						<option value="${item.category_no}">${item.category_name}</option>	
-					</c:forEach>
-				</select>
-			</div>
-			<div class="form-group">
-				<input type="text" id="searchWord" name="searchWord" class="form-control"/>
-				<input type="hidden"  id="gamecode" name="gamecode" value="${gamecode}"/>
-			</div>
-			<button type="button" id="searchBtn" class="btn btn-info">검색</button>
-		</form>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-12">
-		<div  id="quizList">
-
+<div class="studyGame-main-content">
+	<div class="row">
+		<div class="searchDiv col-md-12">
+			<form class="form-inline"  autocomplete="off">
+				<div class="form-group">
+					<select name="categoryNo" id="category" class=" form-control">
+						<c:forEach var="item" items="${categoryList}" varStatus="loop">
+					<option value="${item.category_no}">${item.category_name}</option>	
+				</c:forEach>
+			</select>
+		</div>
+		<div class="form-group">
+			<input type="text" id="searchWord" name="searchWord" class="form-control"/>
+			<input type="hidden"  id="gamecode" name="gamecode" value="${gamecode}"/>
+				</div>
+				<button type="button" id="searchBtn" class="btn btn-info">검색</button>
+			</form>
 		</div>
 	</div>
-	<!-- column -->
-</div>
-<!-- row -->
-<div class="row">
-	<div class="col-md-12 text-center">페이징....</div>
-</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div  id="quizList">
+	
+			</div>
+		</div>
+		<!-- column -->
+	</div>
+	<!-- row -->
+	<div class="row">
+		<div class="col-md-12 text-center">페이징....</div>
+	</div>
+</div>	
 <!-- 모달 -->
 	<div class="modal fade" id="infoModal" data-backdrop="false" >
 	    <div class="modal-dialog modal-lg" >

@@ -12,12 +12,21 @@ alias="" 부분 - 매퍼파일의 type 이 된다.
 	<typeAliases>
 		<typeAlias alias="memberDTO"
 			type="com.allstar.studygame.member.dto.MemberDTO" />
+		<typeAlias alias="longWordDTO"
+			type="com.allstar.studygame.game.dto.LongWordDTO" />
+		<typeAlias alias="shortWordDTO"
+			type="com.allstar.studygame.game.dto.ShortWordDTO" />
+		<typeAlias alias="interviewDTO"
+			type="com.allstar.studygame.game.dto.InterviewDTO" />
 	</typeAliases>
 
  	<mappers>
  		<mapper	resource="com/allstar/studygame/mapper/memberMapper.xml" />
  		<mapper	resource="com/allstar/studygame/mapper/quizCategoryMapper.xml" />
  		<mapper	resource="com/allstar/studygame/mapper/quizMapper.xml" />
+ 		<mapper	resource="com/allstar/studygame/mapper/longWordMapper.xml" />
+ 		<mapper	resource="com/allstar/studygame/mapper/shortWordMapper.xml" />
+ 		<mapper	resource="com/allstar/studygame/mapper/interviewMapper.xml" />
  	</mappers>
  	
 </configuration>

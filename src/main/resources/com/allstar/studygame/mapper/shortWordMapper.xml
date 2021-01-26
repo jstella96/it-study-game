@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<mapper namespace="com.allstar.studygame.mapper.shortWordMapper">
+	
+	<resultMap type="shortwordDTO" id="shortwordDTOResult">
+			<result property="shortwordQuizNo" column="shortword_quiz_no"/>
+			<result property="categoryNo" column="category_no"/>
+			<result property="shortwordQuiz" column="shortword_quiz"/>
+			<result property="shortwordQuizInfo" column="shortword_quiz_info"/>
+	</resultMap>
+
+	
+	<select id="selectShortWordQuizList" parameterType="java.util.Map" resultMap="shortwordDTOResult">
+		
+	</select>
+	
+	
+</mapper>

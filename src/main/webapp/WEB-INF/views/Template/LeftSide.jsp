@@ -12,11 +12,11 @@
   		<!-- 왼쪽 메뉴 부분 -->
    	<ul class="menu_ul">
    		<li>
-   			<a href="<c:url value="/shortword/page"/>" class="btn"  style="top:38%">
+   			<a href="<c:url value="/longword/page"/>" class="btn"  style="top:38%">
   				<span class="glyphicon glyphicon-education"></span>긴글연습</a>
   			</li>
   			<li >
-   			<a href="<c:url value="/longword/page"/>" class="btn" style="top:48%;">
+   			<a href="<c:url value="/shortword/page"/>" class="btn" style="top:48%;">
   				<span class="glyphicon glyphicon-education"></span>짧은글연습</a>
   			</li>
   			<li >

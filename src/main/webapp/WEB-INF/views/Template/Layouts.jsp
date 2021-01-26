@@ -92,12 +92,12 @@ cursor: pointer;
   		</div>
 	    <!--오른쪽 본 게임 -->
 	    <div class="col-xs-10 studyGame-main">
-	    	<!--오른쪽 본 게임Content _테두리 내부-->
-		    	<div class="studyGame-main-content">
+	    	<!--오른쪽 본 게임Content _테두리 내부 직접 ..
+		    	<div class="studyGame-main-content">-->
 		    	
 					<tiles:insertAttribute name="body"/>
 					
-		    	</div><!--/studyGame-main_content _ 오른쪽 테두리 내부 -->
+		    	<!--</div>/studyGame-main_content _ 오른쪽 테두리 내부 -->
 	    	</div>
 	    </div><!-- /studyGame-main 오른쪽 본게임 -->
     </div><!-- /study Game 실제 게임판 -->

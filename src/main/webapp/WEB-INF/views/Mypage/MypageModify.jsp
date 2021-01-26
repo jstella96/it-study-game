@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
-
 .mypageProfileImg{
 width: 100%;
 margin: 5px;
@@ -29,11 +28,9 @@ margin-top: 10px;
 }.modal-header{
 font-family: 'Noto Sans KR', sans-serif;
 }
-
-
 </style>
 
-
+<div class="studyGame-main-content">
      <div class="row">
      	<h1 class="col-xs-12">마이페이지</h1>
      </div>
@@ -72,50 +69,51 @@ font-family: 'Noto Sans KR', sans-serif;
 			  <button type="submit" id="nicknameModifyBtn" class="btn btn-default">저 장</button>
 		</div>
 	</form>	
-	
-	<div class="modal fade" id="characterModal" data-backdrop="false" >
-	    <div class="modal-dialog modal-lg" >
-	        <div class="modal-content">
-	            <div class="modal-header">
-	               	 프로필 이미지
-	            </div>
-	            <div class="modal-body">		
-				   	<table>
-						<tr>
-							<th><img class="character" id="1"
-								src="<c:url value='/resources/images/character/character1.png'/>"/></th>
-							<th><img class="character" id="2"
-								src="<c:url value='/resources/images/character/character2.png'/>"/></th>
-							<th><img class="character" id="3"
-								src="<c:url value='/resources/images/character/character3.png'/>"/></th>
-							<th><img class="character" id="4"
-								src="<c:url value='/resources/images/character/character4.png'/>"/></th>
-	
-						</tr>
-						<tr>
-							<th><img class="character" id="5"
-								src="<c:url value='/resources/images/character/character5.png'/>"/></th>
-							<th><img class="character" id="6"
-								src="<c:url value='/resources/images/character/character6.png'/>"/></th>
-							<th><img class="character" id="7"
-								src="<c:url value='/resources/images/character/character7.png'/>" /></th>
-							<th><img class="character" id="8"
-								src="<c:url value='/resources/images/character/character8.png'/>"/></th>
-						</tr>
-					</table>	
-	            </div>
-	            <div class="modal-footer">
-	          		 <form method="post" action="<c:url value='/mypage/modify'/>">
-							<input  id="profileImg" type="hidden" name="profileImg" value="${sessionScope.memberProfileImg}" />
-							<input  id="signDate" type="hidden" name="signDate" value="${signDate}" />
-							
-							<button type="submit" class="btn btn-default">Save</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</form>
-	            </div>
-	        </div>
-	    </div>
-	</div><!-- 모달 -->
+</div>
+<!-- 모달 -->	
+<div class="modal fade" id="characterModal" data-backdrop="false" >
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+            <div class="modal-header">
+               	 프로필 이미지
+            </div>
+            <div class="modal-body">		
+			   	<table>
+					<tr>
+						<th><img class="character" id="1"
+							src="<c:url value='/resources/images/character/character1.png'/>"/></th>
+						<th><img class="character" id="2"
+							src="<c:url value='/resources/images/character/character2.png'/>"/></th>
+						<th><img class="character" id="3"
+							src="<c:url value='/resources/images/character/character3.png'/>"/></th>
+						<th><img class="character" id="4"
+							src="<c:url value='/resources/images/character/character4.png'/>"/></th>
+
+					</tr>
+					<tr>
+						<th><img class="character" id="5"
+							src="<c:url value='/resources/images/character/character5.png'/>"/></th>
+						<th><img class="character" id="6"
+							src="<c:url value='/resources/images/character/character6.png'/>"/></th>
+						<th><img class="character" id="7"
+							src="<c:url value='/resources/images/character/character7.png'/>" /></th>
+						<th><img class="character" id="8"
+							src="<c:url value='/resources/images/character/character8.png'/>"/></th>
+					</tr>
+				</table>	
+            </div>
+            <div class="modal-footer">
+          		 <form method="post" action="<c:url value='/mypage/modify'/>">
+						<input  id="profileImg" type="hidden" name="profileImg" value="${sessionScope.memberProfileImg}" />
+						<input  id="signDate" type="hidden" name="signDate" value="${signDate}" />
+						
+						<button type="submit" class="btn btn-default">Save</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</form>
+            </div>
+        </div>
+    </div>
+</div><!-- 모달 -->
 
 
 

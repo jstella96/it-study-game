@@ -20,7 +20,7 @@ margin-top: 10px;
 		background-color: #99BBFF;
 }
 </style>
-
+<div class="studyGame-main-content">
      <div class="row">
      	<h1 class="col-xs-12">마이페이지</h1>
      </div>
@@ -51,5 +51,5 @@ margin-top: 10px;
 	<div class="row btnBox text-right col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 ">
 		<a href="<c:url value="/mypage/modify"/>" class="btn btn-default">수 정</a>
 	</div>	
-
+</div>
 				
