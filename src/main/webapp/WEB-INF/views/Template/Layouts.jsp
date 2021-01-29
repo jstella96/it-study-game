@@ -77,7 +77,7 @@ cursor: pointer;
 <!--게임 시작 버튼 관련 모달 스타일-->
 <style>
 #gameStartModal .gameStartModalHeader{
-	background: linear-gradient(to bottom, #9966FF, #99CCFF);
+	background: linear-gradient(to bottom, #9977FF, #99CCFF);
 	color:white;
 	padding:1px;
 	text-align: center;

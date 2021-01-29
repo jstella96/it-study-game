@@ -1,6 +1,7 @@
 package com.allstar.studygame.game.web;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -24,11 +25,12 @@ public class LongWordController {
 
 	//긴글게임페이지 이동
 	@RequestMapping(value = "page", method = RequestMethod.GET)
-	public String moveLongWordpage(HttpServletRequest req, Model model) {
-		/*Map map = new HashMap();
-		map.put("id",req.getSession().getAttribute("memberId").toString());
-		longWordService =longWordService.getQuizs(map);
-		model.addAttribute("quizList",quizList);*/
+	public String moveLongWordpage(@RequestParam Map map, Model model) {
+		
+		List<Map> quizList =longWordService.getQuizs(map);
+		System.out.println(quizList.size());
+		model.addAttribute("quizList",quizList);
+		model.addAttribute("targetTypingSpeed",400);
 		return "Game/LongWord.game";
 	}//moveLongWordpage()
 	

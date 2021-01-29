@@ -18,7 +18,7 @@ public class LongWordDAOImpl implements LongWordDAO {
 	private SqlSessionTemplate sqlMapper;
 
 	@Override
-	public List<LongWordDTO> selectLongWordQuizList(Map map) {
+	public List<Map> selectLongWordQuizList(Map map) {
 		
 		return sqlMapper.selectList("selectLongWordQuizList",map);
 	}

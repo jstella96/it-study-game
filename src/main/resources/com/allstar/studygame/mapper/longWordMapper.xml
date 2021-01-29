@@ -13,8 +13,8 @@
 			<result property="longwordQuizInfo" column="longword_quiz_info"/>
 	</resultMap>
 
-	<select id="selectLongWordQuizList" parameterType="java.util.Map" resultMap="longWordDTOResult">
-		
+	<select id="selectLongWordQuizList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT  longword_quiz AS quiz ,longword_quiz_info AS info  FROM longword_quiz WHERE category_no =#{categoryNo}
 	</select>
 	
 	<insert id="insertAvgTypingSpeed" parameterType="java.util.Map">

@@ -17,7 +17,7 @@ public class LongWordServiceImpl implements LongWordService{
 	@Resource(name="longWordDAO")
 	private LongWordDAO dao;
 	
-	public List<LongWordDTO> getQuizs(Map map) {
+	public List<Map> getQuizs(Map map) {
 		
 		return dao.selectLongWordQuizList(map);
 		

@@ -8,7 +8,7 @@ import com.allstar.studygame.game.dto.LongWordDTO;
 public interface LongWordDAO {
 	
 	
-	List<LongWordDTO> selectLongWordQuizList(Map map);
+	List<Map> selectLongWordQuizList(Map map);
 	
 	/*문제 타이핑 속도 관련*/ 
 	 void insertAvgTypingSpeed(Map map);
