@@ -13,5 +13,5 @@ public interface LongWordDAO {
 	/*문제 타이핑 속도 관련*/ 
 	 void insertAvgTypingSpeed(Map map);
 
-
+	 String selectTargetTypingSpeed(String id);
 }

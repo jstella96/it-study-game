@@ -2,6 +2,8 @@ package com.allstar.studygame.game.service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 
@@ -18,8 +20,27 @@ public class InterviewServiceImpl implements InterviewService{
 	private InterviewDAO dao;
 
 	@Override
-	public List<InterviewDTO> getQuizs(Map map) {
-		// TODO Auto-generated method stub
-		return dao.selectInterviewQuizList(map);
-	}
+	public List<Map> getQuizs(Map map) {
+		List<Map> list =  dao.selectInterviewQuizList(map);
+		System.out.println(list.size());
+		//40개 미만일 때 반복해서 값을 넣어준다.
+		if(list.size() < 20 && 0 < list.size()){
+			List<Map> repeatList = new Vector<Map>();
+			while(repeatList.size() < 20) {
+				for(Map repeatmap : list) {
+					repeatList.add(repeatmap);
+					if (repeatList.size() == 20) {
+						break;
+					}//if()
+				}//for()
+			}//while()
+
+			return repeatList;
+			
+		}else {
+			
+			return dao.selectInterviewQuizList(map);
+		}
+	
+	}// getQuizs()
 }

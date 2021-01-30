@@ -8,7 +8,10 @@
 alias="" 부분 - 매퍼파일의 type 이 된다.
  -->
 <configuration>
-
+    <settings>
+        <setting name="callSettersOnNulls" value="true"/>
+    </settings>
+    
 	<typeAliases>
 		<typeAlias alias="memberDTO"
 			type="com.allstar.studygame.member.dto.MemberDTO" />

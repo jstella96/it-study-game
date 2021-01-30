@@ -8,7 +8,7 @@ import com.allstar.studygame.game.dto.ShortWordDTO;
 
 public interface ShortWordDAO {
 	 
-	List<ShortWordDTO> selectShortWordQuizList(Map map);
+	List<Map> selectShortWordQuizList(Map map);
 	 
 		
 }

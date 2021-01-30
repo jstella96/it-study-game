@@ -23,14 +23,15 @@ public class LongWordController {
 	@Resource(name="longWordService")
 	private LongWordService longWordService;
 
-	//긴글게임페이지 이동
+	//1]긴글게임페이지 이동
 	@RequestMapping(value = "page", method = RequestMethod.GET)
-	public String moveLongWordpage(@RequestParam Map map, Model model) {
+	public String moveLongWordpage(@RequestParam Map map, Model model,HttpServletRequest req) {
 		
 		List<Map> quizList =longWordService.getQuizs(map);
 		System.out.println(quizList.size());
 		model.addAttribute("quizList",quizList);
-		model.addAttribute("targetTypingSpeed",400);
+		String targetTypingSpeed = longWordService.getTargetTypingSpeed(req.getSession().getAttribute("memberId").toString());
+		model.addAttribute("targetTypingSpeed",targetTypingSpeed);
 		return "Game/LongWord.game";
 	}//moveLongWordpage()
 	

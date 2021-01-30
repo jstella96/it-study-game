@@ -89,9 +89,9 @@ canvas{
 </div>				
 
 
- 
+
 <script>
-	
+
 	var count =0;
    	var errcount =0;
 	var errcountImsi =0;
@@ -139,17 +139,19 @@ canvas{
 			 firstWord = arr[wordNum+1];
 			 firstWordInfo =arrinfo[wordNum+1];
 			 
-			document.getElementsByName('containerMain')[0].innerHTML = firstWord;
-			document.getElementById('infoDiv').innerHTML = firstWordInfo;
+			 document.getElementsByName('containerMain')[0].innerHTML =  firstWord == null?"":firstWord;
+			 document.getElementById('infoDiv').innerHTML = firstWordInfo == null?"":firstWordInfo;
 			
-               enter.value ="";
-               //널일때 빈 공백 나오게 에러.
-               document.getElementsByName('containerNext')[0].innerHTML = arr[wordNum+2] == null?"":arr[wordNum+2];
-               document.getElementsByName('containerNext')[1].innerHTML = arr[wordNum+3] == null?"":arr[wordNum+3];
-               document.getElementsByName('containerNext')[2].innerHTML = arr[wordNum+4] == null?"":arr[wordNum+4];
-               wordNum++
-               
-               
+             enter.value ="";
+             //널일때 빈 공백 나오게 에러.
+             document.getElementsByName('containerNext')[0].innerHTML = arr[wordNum+2] == null?"":arr[wordNum+2];
+             document.getElementsByName('containerNext')[1].innerHTML = arr[wordNum+3] == null?"":arr[wordNum+3];
+             document.getElementsByName('containerNext')[2].innerHTML = arr[wordNum+4] == null?"":arr[wordNum+4];
+             wordNum++
+	             if(wordNum==${quizList.size()}) {
+	            	console.log("모달창이용하여 점수 띄우기");
+	            	clearInterval(drawInterval);
+	             } 
             }
             else{
            	 totalImsi = 0;
@@ -271,7 +273,7 @@ canvas{
 		    drawBa5();
 	 }
 
-		setInterval(draw, 10); 
+		var drawInterval = setInterval(draw, 10); 
 		drawBa4();
 		
 

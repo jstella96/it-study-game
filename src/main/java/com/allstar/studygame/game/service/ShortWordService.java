@@ -8,5 +8,5 @@ import com.allstar.studygame.game.dto.ShortWordDTO;
 public interface ShortWordService {
 	
 	//퀴즈 리스트 얻기
-	List<ShortWordDTO> getQuizs(Map map);
+	List<Map> getQuizs(Map map);
 }

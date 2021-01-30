@@ -12,11 +12,13 @@
 			<result property="nickname" column="nickname"/>
 			<result property="signDate" column="sign_date"/>
 			<result property="profileImg" column="profile_img"/>
+			<result property="targetTypingSpeed" column="target_typing_speed"/>
+			
 	</resultMap>
 	
 	
 	<insert id="insertMember" parameterType="java.util.Map">
-		INSERT INTO member_ VALUES(#{id},#{password},#{nickname},default,'character1.png')
+		INSERT INTO member_ VALUES(#{id},#{password},#{nickname},default,'character1.png',400)
 	</insert>
 	
 	<update id="updateMember" parameterType="java.util.Map">

@@ -9,7 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.allstar.studygame.game.dao.InterviewDAO;
-import com.allstar.studygame.game.dto.InterviewDTO;
+
 
 
 @Repository("interviewDAO")
@@ -19,8 +19,8 @@ public class InterviewDAOImpl implements InterviewDAO  {
 	private SqlSessionTemplate sqlMapper;
 
 	@Override
-	public List<InterviewDTO> selectInterviewQuizList(Map map) {
-		
+	public List<Map> selectInterviewQuizList(Map map) {
+
 		return sqlMapper.selectList("selectInterviewQuizList",map);
 	}
 

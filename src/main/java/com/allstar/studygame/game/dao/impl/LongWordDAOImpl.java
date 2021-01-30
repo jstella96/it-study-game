@@ -9,7 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.allstar.studygame.game.dao.LongWordDAO;
-import com.allstar.studygame.game.dto.LongWordDTO;
+
 
 @Repository("longWordDAO")
 public class LongWordDAOImpl implements LongWordDAO {
@@ -27,6 +27,12 @@ public class LongWordDAOImpl implements LongWordDAO {
 	public void insertAvgTypingSpeed(Map map) {
 		
 		sqlMapper.insert("insertAvgTypingSpeed", map);
+	}
+
+	@Override
+	public String selectTargetTypingSpeed(String id) {
+		// TODO Auto-generated method stub
+		return sqlMapper.selectOne("selectTargetTypingSpeed",id);
 	}
 
 }

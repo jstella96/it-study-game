@@ -2,6 +2,7 @@ package com.allstar.studygame.game.service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 
@@ -19,7 +20,27 @@ public class LongWordServiceImpl implements LongWordService{
 	
 	public List<Map> getQuizs(Map map) {
 		
-		return dao.selectLongWordQuizList(map);
+		List<Map> list =  dao.selectLongWordQuizList(map);
+		if(list.size() < 40 && 0 < list.size()){
+			List<Map> repeatList = new Vector<Map>();
+			while(repeatList.size() < 40) {
+				for(Map repeatmap : list) {
+					repeatList.add(repeatmap);
+					if (repeatList.size() == 40) {
+						break;
+					}//if()
+				}//for()
+			}//while()
+
+			return repeatList;
+			
+		}else {
+			
+			return dao.selectLongWordQuizList(map);
+		}
+		
+		
+		
 		
 	}
 
@@ -27,6 +48,12 @@ public class LongWordServiceImpl implements LongWordService{
 	public void inputAvgTypingSpeed(Map map) {
 		
 		dao.insertAvgTypingSpeed(map);
+	}
+
+	@Override
+	public String getTargetTypingSpeed(String id) {
+		
+		return dao.selectTargetTypingSpeed(id);
 	}
 
 }

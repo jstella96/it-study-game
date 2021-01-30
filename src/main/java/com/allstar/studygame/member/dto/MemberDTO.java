@@ -12,5 +12,5 @@ public class MemberDTO {
 	String nickname;
 	java.sql.Date signDate;
 	String profileImg;
-
+	String targetTypingSpeed;
 }

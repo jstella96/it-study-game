@@ -2,6 +2,7 @@ package com.allstar.studygame.game.service.impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 
@@ -19,8 +20,28 @@ public class ShortWordServiceImpl implements ShortWordService {
 	private ShortWordDAO dao;
 
 	@Override
-	public List<ShortWordDTO> getQuizs(Map map) {
+	public List<Map> getQuizs(Map map) {
 		
-		return dao.selectShortWordQuizList(map);
-	}
-}
+		List<Map> list = dao.selectShortWordQuizList(map);
+		if(list.size() < 40 && 0 < list.size()){
+			List<Map> repeatList = new Vector<Map>();
+			while(repeatList.size() < 40) {
+				for(Map repeatmap : list) {
+					repeatList.add(repeatmap);
+					if (repeatList.size() == 40) {
+						break;
+					}//if()
+				}//for()
+			}//while()
+
+			return repeatList;
+			
+		}else {
+			
+			return dao.selectShortWordQuizList(map);
+		
+		}
+	
+	}//getQuizs()
+}//class()
+

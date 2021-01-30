@@ -14,8 +14,9 @@
 	</resultMap>
 
 	
-	<select id="selectShortWordQuizList" parameterType="java.util.Map" resultMap="shortwordDTOResult">
-		
+	<select id="selectShortWordQuizList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT  shortword_quiz AS quiz ,shortword_quiz_info AS info FROM shortword_quiz 
+		WHERE category_no =#{categoryNo} order by rand() limit 40
 	</select>
 	
 	

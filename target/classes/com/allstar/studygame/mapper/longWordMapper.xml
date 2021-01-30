@@ -14,12 +14,17 @@
 	</resultMap>
 
 	<select id="selectLongWordQuizList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT  longword_quiz AS quiz ,longword_quiz_info AS info  FROM longword_quiz WHERE category_no =#{categoryNo}
+		SELECT  longword_quiz AS quiz ,longword_quiz_info AS info FROM longword_quiz 
+		WHERE category_no =#{categoryNo} order by rand() limit 20
 	</select>
+	
 	
 	<insert id="insertAvgTypingSpeed" parameterType="java.util.Map">
 		
 	</insert>
 	
+	<select id="selectTargetTypingSpeed" parameterType="String" resultType="String">
+		select target_typing_speed as targetTypingSpeed from member_ where id= #{id}
+	</select>
 	
 </mapper>

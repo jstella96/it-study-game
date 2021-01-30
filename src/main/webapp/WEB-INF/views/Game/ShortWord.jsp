@@ -59,14 +59,14 @@ fieldset{
 	
 		<fieldset name="main">
 			<c:forEach begin="0" end="4" var="i" >
-				<div name="container" class ="one" id="${0+i*8}" >${list[0+i*8].QUIZ}</div>
-				<div name="container" class ="two" id="${1+i*8}" >${list[1+i*8].QUIZ}</div>
-				<div name="container" class ="one" id="${2+i*8}" >${list[2+i*8].QUIZ}</div>
-				<div name="container" class ="two" id="${3+i*8}" >${list[3+i*8].QUIZ}</div>
-				<div name="container" class ="two" id="${4+i*8}" >${list[4+i*8].QUIZ}</div>
-				<div name="container" class ="one" id="${5+i*8}" >${list[5+i*8].QUIZ}</div>
-				<div name="container" class ="two" id="${6+i*8}" >${list[6+i*8].QUIZ}</div>
-				<div name="container" class ="one" id="${7+i*8}" >${list[7+i*8].QUIZ}</div>
+				<div name="container" class ="one" id="${0+i*8}" >${quizList[0+i*8].quiz}</div>
+				<div name="container" class ="two" id="${1+i*8}" >${quizList[1+i*8].quiz}</div>
+				<div name="container" class ="one" id="${2+i*8}" >${quizList[2+i*8].quiz}</div>
+				<div name="container" class ="two" id="${3+i*8}" >${quizList[3+i*8].quiz}</div>
+				<div name="container" class ="two" id="${4+i*8}" >${quizList[4+i*8].quiz}</div>
+				<div name="container" class ="one" id="${5+i*8}" >${quizList[5+i*8].quiz}</div>
+				<div name="container" class ="two" id="${6+i*8}" >${quizList[6+i*8].quiz}</div>
+				<div name="container" class ="one" id="${7+i*8}" >${quizList[7+i*8].quiz}</div>
 			</c:forEach>
 		</fieldset>
 	 
@@ -115,8 +115,8 @@ $('#infoicon').click(function(){
 });
 
  var arrinfo = new Array();
-	<c:forEach var="item" items="${list}">
- arrinfo.push("${item.INFO}");
+	<c:forEach var="item" items="${quizList}">
+ arrinfo.push("${item.info}");
  </c:forEach>
 
 
@@ -139,9 +139,7 @@ $('#infoicon').click(function(){
 			 			 	container[i].style.border = "#FFF 3px solid";
 			 		}
 	            } 
-		
-	            
-	            
+
 			 if (window.event.keyCode == 13) {
 				 var enter = document.getElementById('enter');
 		            for(i=0;i < container.length;i++){
@@ -163,7 +161,7 @@ $('#infoicon').click(function(){
 		 
 			
 		
-		//realTimer();
+		//realTimer(); 시간/점수 계산 
 		let real = setInterval(realTimer, 1000);	
 		var startTime = new Date();
 		function realTimer() {
@@ -175,10 +173,11 @@ $('#infoicon').click(function(){
 				document.getElementById('score').innerHTML = "최종 점수 : "+ score+'점';
 					for(i=0;i < container.length;i++){
 		 			 	container[i].style.display='none';
+		 			 	
 		 			}
 				clearTimeout(real);	
 				document.getElementById("nowTimes").innerHTML  = "time 0:00";
-
+				alert("끝");
 			}
 		
 		}

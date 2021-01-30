@@ -18,7 +18,7 @@ public class ShortWordDAOImpl implements ShortWordDAO{
 	private SqlSessionTemplate sqlMapper;
 
 	@Override
-	public List<ShortWordDTO> selectShortWordQuizList(Map map) {
+	public List<Map> selectShortWordQuizList(Map map) {
 		// TODO Auto-generated method stub
 		return sqlMapper.selectList("selectShortWordQuizList",map);
 	}

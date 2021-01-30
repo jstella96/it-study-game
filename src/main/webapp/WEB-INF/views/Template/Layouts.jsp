@@ -152,15 +152,15 @@ cursor: pointer;
 		 gamecode = $(this).data('gamecode');
 
 		if(gamecode=='01'){
-			$("#modal-quizCount").html('40');
+			$("#modal-quizCount").html('20');
 			$("#modal-gameName").html('긴 글 연습')
 			$("#gameStartForm").attr("action", "<c:url value='/longword/page'/>");
 		}else if(gamecode=='02'){
-			$("#modal-quizCount").html('20');
+			$("#modal-quizCount").html('40');
 			$("#modal-gameName").html('짧은 글 연습');
 			$("#gameStartForm").attr("action", "<c:url value='/shortword/page'/>");
 		}else{
-			$("#modal-quizCount").html('40');
+			$("#modal-quizCount").html('20');
 			$("#modal-gameName").html('개념 완성');
 			$("#gameStartForm").attr("action", "<c:url value='/interview/page'/>");
 		}

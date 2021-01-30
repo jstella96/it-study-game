@@ -12,5 +12,7 @@ public interface LongWordService {
 	
 	//타이핑 스피드
 	void inputAvgTypingSpeed(Map map);	
+	
+	String getTargetTypingSpeed(String id);
 
 }
