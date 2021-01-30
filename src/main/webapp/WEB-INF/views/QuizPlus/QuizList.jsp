@@ -119,7 +119,7 @@ function quizListChangeAjax(){
 	data:{gamecode:"${gamecode}",categoryNo:$("#category").val(),searchWord:$("#searchWord").val()},
 	dataType:'json',
 	success:function(data){
-		
+
 		var quizs="<table class='table table-hover quizs-table'><tr><th class='text-center'>${gamename}</th></tr>";
 		$.each(data,function(index,element){			
 			quizs+="<tr><td class='quiz' data-no="+element["quiz_no"]+" data-info="+element["quiz_info"]+">"+element["quiz"]+"</td></tr>";
