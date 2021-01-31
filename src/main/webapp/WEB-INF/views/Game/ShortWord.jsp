@@ -25,13 +25,13 @@ fieldset{
     background: linear-gradient(to right,#FFFF77, #FFFF44 );
     margin:2px;
 	border:#FFF 2px solid;
-	font-size: 22px;  
+	font-size: 3vh;  
 }.two{
     width:29%;
     background: linear-gradient(to right, #FF99CC, #FF9999);
     margin:2px;
     border:#FFF 2px solid;
-    font-size: 22px;
+    font-size: 3vh;  
 }.shortwordGame-main-content{
 	background-color: white; 
 	border-radius: 20px;
@@ -47,9 +47,25 @@ fieldset{
 	text-align: center;
 	width: 94%;
 	margin: 0 3%;
+	font-size:15px;
 }.shortWordScore{
 	width: 100px; height: 30px;
 	line-height: 30px; font-size: 30px
+}#gameEndModal .gameEndModalHeader{
+	background: linear-gradient(to bottom, #dd0d0d, #ff6060);
+	color:white;
+	padding:1px;
+	text-align: center;
+}#gameEndModal { 
+ 	top : 20%; 
+}#gameEndModal .modal-dialog{
+ 	 width: 30%
+}#gameEndModal modal-footer{
+	padding: 1px;
+}#gameEndModal  .gameEndModalBody {
+	padding-top: 40px;
+	padding-bottom: 50px;
+	font-size: 2vh
 }
 </style>
 
@@ -94,7 +110,24 @@ fieldset{
 	 </div>
  </div>		
 				
-			
+<!-- 모달 -->
+<div class="modal fade" id="gameEndModal" data-backdrop="false" >
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header gameEndModalHeader">
+               	<h4 id="modal-gameName">성적표</h4>
+            </div>
+	      <div class="modal-body gameEndModalBody" >
+		 		점수 : <span id="endModal-score">0</span>점<br>
+		
+		  </div>   	
+	       <div class="modal-footer"> 
+				<a href="<c:url value='/record/page'/>" class="btn btn-default" id="modal-gameEndBtn">확인</a>
+	       </div>   
+        </div>
+    </div>
+</div>
+<!-- /모달 -->			
 			
 				
 	
@@ -177,7 +210,9 @@ $('#infoicon').click(function(){
 		 			}
 				clearTimeout(real);	
 				document.getElementById("nowTimes").innerHTML  = "time 0:00";
-				alert("끝");
+				$("#endModal-score").html(score);
+				$("#enter").hide();
+				$("#gameEndModal").modal();
 			}
 		
 		}

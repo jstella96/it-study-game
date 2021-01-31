@@ -7,7 +7,7 @@
 <mapper namespace="com.allstar.studygame.mapper.quizCategoryMapper">
 	
 	<insert id="insertQuizCategory" parameterType="java.util.Map">
-		INSERT INTO quiz_category VALUES(0,#{id},#{category},#{gamecode});
+		INSERT INTO quiz_category VALUES(0,#{id},#{category},#{gamecode})
 	</insert>
 
 	<delete id="deleteQuizCategory" parameterType="java.util.Map">

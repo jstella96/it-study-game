@@ -20,11 +20,15 @@
 	
 	
 	<insert id="insertAvgTypingSpeed" parameterType="java.util.Map">
-		
+		INSERT INTO avg_typing_speed values (#{id},#{typingSpeed},default)
 	</insert>
 	
 	<select id="selectTargetTypingSpeed" parameterType="String" resultType="String">
 		select target_typing_speed as targetTypingSpeed from member_ where id= #{id}
+	</select>
+	
+	<select id="selectAvgTypingSpeedList" parameterType="String" resultType="java.util.Map">
+		select * from avg_typing_speed where id= #{id} order by typing_date desc, rand() limit 5
 	</select>
 	
 </mapper>

@@ -1,5 +1,6 @@
 package com.allstar.studygame.member.web;
 
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -58,6 +59,8 @@ public class MemberController {
 			req.getSession().setAttribute("memberId",memberdto.getId());
 			req.getSession().setAttribute("memberNickname",memberdto.getNickname());
 			req.getSession().setAttribute("memberProfileImg",memberdto.getProfileImg());
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일"); 
+			model.addAttribute("signDate", simpleDateFormat.format(memberdto.getSignDate()));
 			return "Mypage/Mypage.game";
 		}else {
 			attr.addFlashAttribute("error","존재하지 않는 아이디 입니다.");

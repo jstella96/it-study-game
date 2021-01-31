@@ -15,7 +15,7 @@
 
 	<select id="selectInterviewQuizList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT interview_quiz_no AS quizNo  ,interview_quiz AS quiz ,interview_quiz_info AS info FROM interview_quiz 
-		WHERE category_no =#{categoryNo} order by rand() limit 20	
+		WHERE category_no =#{categoryNo} order by rand() limit 10	
 	</select>
 	
 	

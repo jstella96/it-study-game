@@ -14,5 +14,9 @@ public interface LongWordService {
 	void inputAvgTypingSpeed(Map map);	
 	
 	String getTargetTypingSpeed(String id);
+	
+	
+	//기록페이지용 평균속도리스트 얻기
+	List<Map> getAvgTypingSpeedList(String id);
 
 }

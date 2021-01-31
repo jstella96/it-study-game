@@ -43,19 +43,20 @@
 <script>
 if ($('#lineChart').length){	
 	 
-	var arrDate =["2015-15-25","2015-15-55","2015-15-25"];
-	var arrTyping =[355,281,400];
+	//var arrDate =["2015-15-25","2015-15-55","2015-15-25"];
+	//var arrTyping =[355,281,400];
 	
-	//var arrLength =[];
-	//var arrDate =[];
-	/*
-	<c:if test="${!empty chartList}">
-	 	<c:forEach var="item" items="${chartList}">        
-	 		arrLength.push(${item.chartLength});
-	 		arrDate.push("${item.chartDate}일");
+	var arrTyping =[];
+	var arrDate =[];
+	
+	<c:if test="${!empty avgTypingSpeedList}">
+	 	<c:forEach var="item" items="${avgTypingSpeedList}"> 
+	 	console.log("???");
+	 	arrTyping.push(${item.avg_typing_speed});
+	 	arrDate.push("${item.typing_date}");
 	    </c:forEach>
  	</c:if>
-*/
+
 	  var ctx = document.getElementById("lineChart");
 	  var lineChart = new Chart(ctx, {
 		type: 'line',

@@ -21,12 +21,12 @@ public class LongWordServiceImpl implements LongWordService{
 	public List<Map> getQuizs(Map map) {
 		
 		List<Map> list =  dao.selectLongWordQuizList(map);
-		if(list.size() < 40 && 0 < list.size()){
+		if(list.size() < 20 && 0 < list.size()){
 			List<Map> repeatList = new Vector<Map>();
-			while(repeatList.size() < 40) {
+			while(repeatList.size() < 20) {
 				for(Map repeatmap : list) {
 					repeatList.add(repeatmap);
-					if (repeatList.size() == 40) {
+					if (repeatList.size() == 20) {
 						break;
 					}//if()
 				}//for()
@@ -39,8 +39,7 @@ public class LongWordServiceImpl implements LongWordService{
 			return dao.selectLongWordQuizList(map);
 		}
 		
-		
-		
+
 		
 	}
 
@@ -54,6 +53,12 @@ public class LongWordServiceImpl implements LongWordService{
 	public String getTargetTypingSpeed(String id) {
 		
 		return dao.selectTargetTypingSpeed(id);
+	}
+
+	@Override
+	public List<Map> getAvgTypingSpeedList(String id) {
+		// TODO Auto-generated method stub
+		return dao.selectAvgTypingSpeedList(id);
 	}
 
 }

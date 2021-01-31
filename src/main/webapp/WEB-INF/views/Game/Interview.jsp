@@ -32,8 +32,8 @@
 	right: 20%;
 	height: 20vh;
 	width: 60%;
-    font-size: 17px;
-    padding-top:25px;
+    font-size: 2vh;
+    padding-top:3vh;
 }.answerBtn img:hover{
 	background-color: #f5f5f5;
 }.answerBtn:hover{
@@ -63,8 +63,8 @@
 <div class="speechBubble" >
   <p>1.문제를 보며 대답을 생각해보세요.<br> 
   	2.정답확인을 누르면 정답을 확인 할 수있습니다.<br>
-  	3.정답을 자체평가하여 o,x에 체크해 주세요 <br><br>
-  	<button class="btn btn-default interviewStartBtn">시작하기</button>
+  	3.정답을 자체평가하여 o,x에 체크해 주세요 <br>
+  	<button class="btn btn-default interviewStartBtn" style="height: 4vh; font-size: 1.5vh;margin-top: 2vh">시작하기</button>
   </p> 
 </div>
 

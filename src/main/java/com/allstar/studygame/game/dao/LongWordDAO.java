@@ -14,4 +14,8 @@ public interface LongWordDAO {
 	 void insertAvgTypingSpeed(Map map);
 
 	 String selectTargetTypingSpeed(String id);
+	 
+	 List<Map> selectAvgTypingSpeedList(String id);
+
 }
+

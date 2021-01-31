@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.allstar.studygame.game.service.LongWordService;
 
@@ -34,5 +35,19 @@ public class LongWordController {
 		model.addAttribute("targetTypingSpeed",targetTypingSpeed);
 		return "Game/LongWord.game";
 	}//moveLongWordpage()
+	
+	
+	/*sign.jsp로부터 id와 nickname값을 받아와 중복체크를 해준다.*/
+	@RequestMapping(value="typingSpeed/ajax",produces = "text/html; charset=UTF-8")
+	@ResponseBody
+	public String inputTypingSpeed(@RequestParam String typingSpeed,HttpServletRequest req) {
+		
+		Map typingMap = new HashMap();
+		typingMap.put("typingSpeed",typingSpeed);
+		typingMap.put("id",req.getSession().getAttribute("memberId").toString());
+		longWordService.inputAvgTypingSpeed(typingMap);
+		
+		return "ok";
+	}//duplicateCheckAjax()
 	
 }

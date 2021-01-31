@@ -160,7 +160,7 @@ cursor: pointer;
 			$("#modal-gameName").html('짧은 글 연습');
 			$("#gameStartForm").attr("action", "<c:url value='/shortword/page'/>");
 		}else{
-			$("#modal-quizCount").html('20');
+			$("#modal-quizCount").html('10');
 			$("#modal-gameName").html('개념 완성');
 			$("#gameStartForm").attr("action", "<c:url value='/interview/page'/>");
 		}

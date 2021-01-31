@@ -35,4 +35,11 @@ public class LongWordDAOImpl implements LongWordDAO {
 		return sqlMapper.selectOne("selectTargetTypingSpeed",id);
 	}
 
+	@Override
+	public List<Map> selectAvgTypingSpeedList(String id) {
+		// TODO Auto-generated method stub
+		
+		return sqlMapper.selectList("selectAvgTypingSpeedList",id);
+	}
+
 }

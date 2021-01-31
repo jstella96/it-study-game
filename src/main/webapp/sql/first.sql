@@ -3,8 +3,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 /* Drop Tables */
 
 DROP TABLE IF EXISTS avg_typing_speed;
-DROP TABLE IF EXISTS default_quiz;
-DROP TABLE IF EXISTS default_quiz_category;
+DROP TABLE IF EXISTS game_default_quiz;
 DROP TABLE IF EXISTS interview_quiz_mark;
 DROP TABLE IF EXISTS interview_quiz;
 DROP TABLE IF EXISTS longword_quiz;
@@ -25,22 +24,14 @@ CREATE TABLE avg_typing_speed
 );
 
 
-CREATE TABLE default_quiz
+CREATE TABLE game_default_quiz
 (
-	default_quiz_no int NOT NULL AUTO_INCREMENT,
-	default_quiz_category_no int NOT NULL,
-	default_quiz text NOT NULL,
-	default_quiz_info text NOT NULL,
-	PRIMARY KEY (default_quiz_no)
-);
-
-
-CREATE TABLE default_quiz_category
-(
-	default_quiz_category_no int NOT NULL AUTO_INCREMENT,,
-	default_quiz_category_name varchar(20),
-	game_code int,
-	PRIMARY KEY (default_quiz_category_no)
+	game_default_quiz_no int NOT NULL AUTO_INCREMENT,
+	game_code int NOT NULL,
+	game_default_quiz text NOT NULL,
+	game_default_quiz_info text NOT NULL,
+	game_default_quiz_category varchar(40) NOT NULL,
+	PRIMARY KEY (game_default_quiz_no)
 );
 
 
@@ -78,7 +69,6 @@ CREATE TABLE member_
 	nickname varchar(40) NOT NULL,
 	sign_date datetime DEFAULT NOW(), SYSDATE() NOT NULL,
 	profile_img varchar(40) NOT NULL,
-	target_typing_speed int,
 	PRIMARY KEY (id),
 	UNIQUE (nickname)
 );
@@ -106,14 +96,6 @@ CREATE TABLE shortword_quiz
 
 
 /* Create Foreign Keys */
-
-ALTER TABLE default_quiz
-	ADD FOREIGN KEY (default_quiz_category_no)
-	REFERENCES default_quiz_category (default_quiz_category_no)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
 
 ALTER TABLE interview_quiz_mark
 	ADD FOREIGN KEY (interview_quiz_no)

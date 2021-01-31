@@ -33,7 +33,23 @@ canvas{
 	width: 94%;
 	margin: 0 3%;
  	
-}</style>
+}#gameEndModal .gameEndModalHeader{
+	background: linear-gradient(to bottom, #dd0d0d, #ff6060);
+	color:white;
+	padding:1px;
+	text-align: center;
+}#gameEndModal { 
+ 	top : 20%; 
+}#gameEndModal .modal-dialog{
+ 	 width: 30%
+}#gameEndModal modal-footer{
+	padding: 1px;
+}#gameEndModal  .gameEndModalBody {
+	padding-top: 40px;
+	padding-bottom: 50px;
+	font-size: 2vh
+}
+</style> 
 </head>
 <body>
 <div class="row">
@@ -87,7 +103,28 @@ canvas{
 		 </div>
 	 </div>		
 </div>				
+<!-- 게임끝 모달 -->
 
+<!-- 모달 -->
+<div class="modal fade" id="gameEndModal" data-backdrop="false" >
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header gameEndModalHeader">
+               	<h4 id="modal-gameName">성적표</h4>
+            </div>
+	      <div class="modal-body gameEndModalBody" >
+		 		평균 타수 : <span id="endModal-typingSp">0</span>타<br>
+		 		정확도 : <span id="endModal-accuracy">0</span>%<br>
+		 		<small id="endModal-msg" style="color:#f67777"></small>
+		 		
+		  </div>   	
+	       <div class="modal-footer"> 
+				<a href="<c:url value='/record/page'/>" class="btn btn-default" id="modal-gameEndBtn">확인</a>
+	       </div>   
+        </div>
+    </div>
+</div>
+<!-- /모달 -->
 
 
 <script>
@@ -148,9 +185,9 @@ canvas{
              document.getElementsByName('containerNext')[1].innerHTML = arr[wordNum+3] == null?"":arr[wordNum+3];
              document.getElementsByName('containerNext')[2].innerHTML = arr[wordNum+4] == null?"":arr[wordNum+4];
              wordNum++
-	             if(wordNum==${quizList.size()}) {
-	            	console.log("모달창이용하여 점수 띄우기");
-	            	clearInterval(drawInterval);
+	            //게임이 끝났을때 
+             	if(wordNum==${quizList.size()}) {
+             		gameEnd();//게임끝 메소드 실행
 	             } 
             }
             else{
@@ -205,18 +242,20 @@ canvas{
 	  }
 	  
 	  var startTime = new Date();
-	  var max = 0;		
+	  var max = 0;
+	  var avgSpeed =0;
 	  //Ba2]평균타수
 	  function drawBa2() {
 		  var Progress=0;
 		  if(count>0){
 		  	var Time = new Date(); 
 	      	Progress =Math.ceil(count/(Time-startTime)*1000*60);
+	      	//3초이상부터 평균타가 최고 타보다 크면
 	      	if((Time-startTime)*1000 > 3 && max < Progress){
 	      		max = Progress;
 	      	}
 		  }
-		  
+		  avgSpeed = Progress;
 	      document.getElementsByClassName("sp")[1].innerHTML = Progress+"타";
 	      ctx2.beginPath();
 	      ctx2.rect(0, 0,Progress* canvas1.width/( targetTypingSpeed * (3/2)), canvas1.height);
@@ -243,7 +282,9 @@ canvas{
 	      ctx4.fill();
 	      ctx4.closePath();
 	  }
+	 
 	 //Ba5]정확도
+	  var accuracy = 0; // 정확도
 	  function drawBa5() {
 		  
 	      var err =100;
@@ -252,7 +293,10 @@ canvas{
 				err =  Math.ceil((total+totalImsi-errcountImsi-errcount)/(total+totalImsi)* 100);
 		        console.log(err);
 	      }
+	      accuracy = err;
 	      document.getElementsByClassName("sp")[4].innerHTML =err+"%";
+	      
+	      
 	      ctx5.beginPath();	      
 	      ctx5.rect(0, 0, err*2,canvas1.height);
 	      ctx5.fillStyle = "#FF6633";
@@ -272,12 +316,40 @@ canvas{
 		    drawBa3();
 		    drawBa5();
 	 }
-
-		var drawInterval = setInterval(draw, 10); 
-		drawBa4();
+	
+	//]게임 스타트!
+	var drawInterval = setInterval(draw, 10); 
+	drawBa4();
+	
+	function gameEnd(){
 		
-
-
-
+ 		clearInterval(drawInterval);
+ 		$("#endModal-typingSp").html(avgSpeed);
+ 		$("#endModal-accuracy").html(accuracy);
+ 		
+		if(accuracy >= 90){
+			
+			$.ajax({
+				url:"<c:url value="/longword/typingSpeed/ajax"/>",	
+				data:"typingSpeed="+avgSpeed,
+				dataType:'text',
+				success:function(data){
+					console.log("data");
+					$("#endModal-msg").html("성적확인에 기록되었습니다");
+				},			
+				error:function(request,error){
+					console.log("에러:",error);
+					$("#endModal-msg").html("기록 저장에 실패했습니다");
+				}
+			});	
+			
+		}else{
+			
+			$("#endModal-msg").html("정확도 90% 미만은 기록되지 않습니다");
+			
+		}
+		
+		$("#gameEndModal").modal();
+	}
 
 </script>
