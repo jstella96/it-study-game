@@ -113,7 +113,7 @@ fieldset{
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header gameEndModalHeader">
-               	<h4 id="modal-gameName">성적표</h4>
+               	<h4>성적표</h4>
             </div>
 	      <div class="modal-body gameEndModalBody" >
 		 		점수 : <span id="endModal-score">0</span>점<br>
