@@ -26,8 +26,6 @@
             <div class="text-center text-center">
               <h1 class="error-number">error</h1>
               <h2>죄송합니다.</h2>
-              
-              
             </div>
           </div>
         </div>
