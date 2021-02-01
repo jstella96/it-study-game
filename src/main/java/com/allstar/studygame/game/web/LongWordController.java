@@ -37,7 +37,7 @@ public class LongWordController {
 	}//moveLongWordpage()
 	
 	
-	/*sign.jsp로부터 id와 nickname값을 받아와 중복체크를 해준다.*/
+	//2]게임이 끝난후 타이핑 속도를 입력
 	@RequestMapping(value="typingSpeed/ajax",produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String inputTypingSpeed(@RequestParam String typingSpeed,HttpServletRequest req) {
@@ -48,6 +48,6 @@ public class LongWordController {
 		longWordService.inputAvgTypingSpeed(typingMap);
 		
 		return "ok";
-	}//duplicateCheckAjax()
+	}//inputTypingSpeedAjax()
 	
 }

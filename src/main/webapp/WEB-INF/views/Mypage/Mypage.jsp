@@ -49,7 +49,8 @@ margin-top: 10px;
 		</div>			
 	</div>
 	<div class="row btnBox text-right col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 ">
-		<a href="<c:url value="/mypage/modify"/>" class="btn btn-default">수 정</a>
+		<a href="<c:url value="/logout"/>" class="btn btn-default">로그아웃</a>
+		<a href="<c:url value="/mypage/modify"/>" class="btn btn-default">수 정</a>	
 	</div>	
 </div>
 				

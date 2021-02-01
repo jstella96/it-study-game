@@ -54,7 +54,7 @@
 	</div>
 	<!-- row -->
 	<div class="row">
-		<div class="col-md-12 text-center">페이징....</div>
+		<div class="col-md-12 text-center"><button class="btn btn-info">이전</button>&nbsp&nbsp<button class="btn btn-info">다음</button></div>
 	</div>
 </div>	
 <!-- 모달 -->

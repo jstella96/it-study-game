@@ -15,25 +15,26 @@
 
 	<select id="selectInterviewQuizList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT interview_quiz_no AS quizNo  ,interview_quiz AS quiz ,interview_quiz_info AS info FROM interview_quiz 
-		WHERE category_no =#{categoryNo} order by rand() limit 10	
+		WHERE category_no =#{categoryNo} ORDER BY RAND() LIMIT 10
 	</select>
 	
-	
-
-	<select id="selectInterviewMarkList" parameterType="java.util.Map" resultType="java.util.Map">
-			
+	<select id="selectInterviewMarkList" parameterType="String" resultType="java.util.Map">
+		SELECT m.count, m.interview_quiz_no, c.category_name, i.interview_quiz , i.interview_quiz_info FROM (SELECT count(interview_quiz_no) as count ,interview_quiz_no, id FROM interview_quiz_mark GROUP BY interview_quiz_no ORDER BY count DESC ) m
+		INNER JOIN interview_quiz i 
+		ON i.interview_quiz_no = m.interview_quiz_no
+		INNER JOIN quiz_category c
+		ON c.category_no  = i.category_no where  m.id=#{id}	
+		LIMIT 5 OFFSET 0
+		
 	</select>
 	
 	<insert id="insertInterviewMark" parameterType="java.util.Map">
-		
+		INSERT INTO interview_quiz_mark VALUES(#{id},#{wrongAnswerNo})
 	</insert>
 	
-	<update id="updateInterviewMark" parameterType="java.util.Map">
-		
-	</update>
-	
-	<delete id="deleteInterviewMark" parameterType="java.util.Map">
-		
+
+	<delete id="deleteInterviewMark" parameterType="String">
+		  DELETE FROM interview_quiz_mark WHERE interview_quiz_no=#{quizNo}	
 	</delete>
 
 

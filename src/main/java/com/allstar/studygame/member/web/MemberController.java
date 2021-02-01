@@ -48,6 +48,16 @@ public class MemberController {
 		return "Main/Home";
 	}//loginGet()
 	
+	//로그아웃
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logoutProcess(HttpServletRequest req) {
+		
+		//로그아웃 처리-세션영역 데이타 삭제
+		req.getSession().invalidate();
+		
+		return "Main/Home";
+	}
+	
 	//로그인 처리
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String loginProcess(@RequestParam Map map, Model model, HttpServletRequest req,RedirectAttributes attr) {

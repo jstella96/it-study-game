@@ -11,27 +11,25 @@ fieldset{
     line-height: 40px;
     padding-left: 3%;
     margin-top: 10px;
-    margin-bottom: 30px;
-
+    margin-bottom: 2vh;
 }fieldset div{
     text-align: center;
     border-radius: 10px 10px ;
 	font-weight :border;
-	font-size :20px;
-    float:left;
-    height: 9%;     
+	line-height: 3.5vh; 
+	font-size :2.5vh;
+	float:left;
+    height: 9%;   
 }.one{
     width:19%;
     background: linear-gradient(to right,#FFFF77, #FFFF44 );
     margin:2px;
 	border:#FFF 2px solid;
-	font-size: 3vh;  
 }.two{
     width:29%;
     background: linear-gradient(to right, #FF99CC, #FF9999);
     margin:2px;
     border:#FFF 2px solid;
-    font-size: 3vh;  
 }.shortwordGame-main-content{
 	background-color: white; 
 	border-radius: 20px;
@@ -49,8 +47,8 @@ fieldset{
 	margin: 0 3%;
 	font-size:15px;
 }.shortWordScore{
-	width: 100px; height: 30px;
-	line-height: 30px; font-size: 30px
+	width: 100px; height: 10vh;
+	line-height: 4vh; font-size: 4vh
 }#gameEndModal .gameEndModalHeader{
 	background: linear-gradient(to bottom, #dd0d0d, #ff6060);
 	color:white;
@@ -96,7 +94,7 @@ fieldset{
 		</table>
 		<div class="col-xs-4 col-xs-offset-1">
 		     <br>
-			 <input  id='enter' onkeyup="enterkey();" type="text"  value="" style="height: 40px" size=40/>
+			 <input  id='enter' onkeyup="enterkey();" type="text"  value="" style="height: 4.5vh" size=40/>
 		</div>
 	</div>	
   </div>

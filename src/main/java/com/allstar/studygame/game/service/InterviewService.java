@@ -9,4 +9,10 @@ public interface InterviewService {
 	
 	//퀴즈 리스트 얻기
 	List<Map> getQuizs(Map map);
+	
+	void inputWrongAnswerNo(Map map);
+	//틀린 퀴즈 리스트 얻기
+	List<Map> getWrongQuizs(String id);
+	
+	void deleteWrongQuiz(String quizNo);
 }

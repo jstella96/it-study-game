@@ -30,20 +30,16 @@ public class InterviewDAOImpl implements InterviewDAO  {
 		sqlMapper.insert("insertInterviewMark",map);
 	}
 
-	@Override
-	public void updateInterviewMark(Map map) {
-		sqlMapper.update("updateInterviewMark",map);
-	}
 
 	@Override
-	public void deleteInterviewMark(Map map) {
-		sqlMapper.delete("deleteInterviewMark",map);
+	public void deleteInterviewMark(String quizNo){
+		sqlMapper.delete("deleteInterviewMark",quizNo);
 	}
 
 	@Override
 	public List<Map> selectInterviewMarkList(String id) {
-		sqlMapper.selectList("selectInterviewMarkList",id);
-		return null;
+		
+		return sqlMapper.selectList("selectInterviewMarkList",id);
 	}
 	
 	

@@ -12,8 +12,7 @@ public interface InterviewDAO {
 	 
 	/*문제 오답 체크 관련*/ 
 	 void insertInterviewMark(Map map);
-	 void updateInterviewMark(Map map);
-	 void deleteInterviewMark(Map map);
+	 void deleteInterviewMark(String quizNo);
 	 
 	 List<Map> selectInterviewMarkList(String id);
 }

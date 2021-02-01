@@ -24,10 +24,10 @@
         <div class="col-md-12">
           <div class="col-middle">
             <div class="text-center text-center">
-              <h1 class="error-number">500</h1>
-              <h2>Sorry but we couldn't find this page</h2>
-              <p>This page you are looking for does not exist
-              </p>
+              <h1 class="error-number">error</h1>
+              <h2>죄송합니다.</h2>
+              
+              
             </div>
           </div>
         </div>

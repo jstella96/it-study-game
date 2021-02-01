@@ -1,5 +1,6 @@
 package com.allstar.studygame.game.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -55,10 +56,16 @@ public class LongWordServiceImpl implements LongWordService{
 		return dao.selectTargetTypingSpeed(id);
 	}
 
+	//날짜 타입 바꾸기
 	@Override
 	public List<Map> getAvgTypingSpeedList(String id) {
-		// TODO Auto-generated method stub
-		return dao.selectAvgTypingSpeedList(id);
+		List<Map> avgTypingSpeedList = dao.selectAvgTypingSpeedList(id);
+		for(Map typingMap : avgTypingSpeedList){
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM월 dd일"); 
+			String typingDate =  simpleDateFormat.format(typingMap.get("typing_date"));
+			typingMap.put("typing_date",typingDate);
+		}
+		return avgTypingSpeedList;
 	}
 
 }

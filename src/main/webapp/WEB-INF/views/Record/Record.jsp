@@ -4,15 +4,15 @@
 <style>
 #typingBox{
 	width: 80%;
-	height: 40vh;
+	height: 35vh;
 	margin-left: 10%;
 	margin-top: 10px;
+	margin-bottom: 10px;
 }.quizs-table tr td{
- 	font-size: 15px;
+ 	font-size: 1.5vh;
  	cursor: pointer;
 }.quizs-table tr:nth-child(1){
  	border-bottom: 4px solid #c3c3c3;
- 	font-size: 30px;
 }.quizs-table tr:nth-child(1) th{
  	border-top: none;
 }
@@ -29,18 +29,53 @@
 	</div>
 
 	<div id="wrongAnswers" >
-		<h3>틀린문제</h3>
+		<h4>오답 노트</h4>
 			<table class='table table-hover quizs-table'>
-			<tr><td class="col-xs-2">카테고리</td><td class="col-xs-2">틀린 횟수</td><td>문제</td></tr>
-			<tr><td>기본문제</td><td>5</td><td class='quiz'>문제</td></tr>
-			<tr><td>기본문제</td><td>4</td><td class='quiz'>문제</td></tr>
+			<tr  style="height: 3vh;" ><td class="col-xs-2">카테고리</td><td class="col-xs-2">틀린 횟수</td><td>문제</td></tr>
+				<c:forEach var="item" items="${wrongQuizList}"> 
+				 <tr class='quiz' data-info='${item.interview_quiz_info}' data-no='${item.interview_quiz_no}'><td>${item.category_name}</td><td>${item.count}</td><td >${item.interview_quiz}</td></tr>
+			    </c:forEach>
 			</table>
+	
+			<div class="col-md-12 text-center"><button class="btn btn-info">이전</button>&nbsp&nbsp<button class="btn btn-info">다음</button></div>
 			
 	</div>
 </div>
 
+<!-- 모달 -->
+<div class="modal fade" id="infoModal" data-backdrop="false" >
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+            <div class="modal-header">
+               	 <h6>오답노트</h6>
+            </div>
+            <div class="modal-body">
+            	<p id="modalQuizInfo"></p>		
+			</div>
+            <div class="modal-footer">
+           		<form action="<c:url value='/record/quiz/delete'/>" method="get">
+           			<input type="hidden" id='modal-quizNo' name='quizNo' value="">
+				 	<button type="submit"  class="btn btn-default">delete</button>
+				 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</form>
+				
+
+            </div>
+        </div>
+    </div>
+</div><!-- 모달 -->
+
 <script src="<c:url value="/resources/js/Chart.min.js"/>"></script>
 <script>
+
+$('.quiz').click(function(){
+	$('#modalQuizInfo').html($(this).data('info'))
+	$('#modal-quizNo').val($(this).data('no'));
+	
+	$('#infoModal').modal()
+});
+
+
 if ($('#lineChart').length){	
 	 
 	//var arrDate =["2015-15-25","2015-15-55","2015-15-25"];

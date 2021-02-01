@@ -47,6 +47,9 @@
 	font-size: 30px;
 	color:#444444;
 	display:none;
+}#gameEnd-Btn{
+	border: none;
+	margin-top: 1vh;
 }
 </style>
 <!--    box-shadow: 2px 2px 3px #d1d1d1-->
@@ -64,7 +67,7 @@
   <p>1.문제를 보며 대답을 생각해보세요.<br> 
   	2.정답확인을 누르면 정답을 확인 할 수있습니다.<br>
   	3.정답을 자체평가하여 o,x에 체크해 주세요 <br>
-  	<button class="btn btn-default interviewStartBtn" style="height: 4vh; font-size: 1.5vh;margin-top: 2vh">시작하기</button>
+  	<button class="btn btn-default interviewStartBtn" style="height: 4vh; font-size: 1.5vh;margin-top: 2vh ;border:none;">시작하기</button>
   </p> 
 </div>
 
@@ -96,14 +99,12 @@
 			$('.answerBtn:eq(0)').show(200);
 			$('.answerBtn:eq(1)').hide(0);
 			var index =  $('.quizBox').data('index')+1
-			//20개 되면 게임 끝
+			//10개 되면 게임 끝
 			if ( (index)  == arr.length){
-				$('.answerBtn').hide();
-				 $(".speechBubble").html("끝입니다.");
-				//여기에 게임끝 로직 
+				gameEnd()//여기에 게임끝 메소드실행
 			}else{
-			console.log(index);
-			interviewQuizChange(index);
+				console.log(index);
+				interviewQuizChange(index);
 			}
 		}else{//정답확인 버튼 보일때 이게 먼저
 			$('.answerBtn:eq(1)').show(500);
@@ -188,6 +189,28 @@
 		
 	});
 	
+	
+	function gameEnd(){
+		console.log("틀린문제 ajax로 집어넣기:"+wrongAnswers)
+		
+		$('.answerBtn').hide();
+		$(".speechBubble").html("문제가 끝났습니다.<br>정답률은 "+Math.ceil(100*(arr.length-wrongAnswers.length) /arr.length)+"%입니다.<br>수고하셨습니다. <br> <a href='<c:url value='/record/page'/>' id='gameEnd-Btn' class='btn btn-default'>확인</a>");
+		
+		for(var i=0; i<wrongAnswers.length; i++){
+			console.log("틀린문제 배열:"+wrongAnswers[i])
+		
+			$.ajax({
+				url:"<c:url value="/interview/wrongAnswer/ajax"/>",	
+				data:"wrongAnswerNo="+wrongAnswers[i],
+				success:function(){
+					console.log("저장완료");
+				},			
+				error:function(error){
+					console.log("에러:",error);
+				}
+			});	//ajax
+		}//for문
+	}//gameEnd()
 	
      
 </script>

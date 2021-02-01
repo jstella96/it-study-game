@@ -43,4 +43,23 @@ public class InterviewServiceImpl implements InterviewService{
 		}
 	
 	}// getQuizs()
+
+	@Override
+	public void inputWrongAnswerNo(Map map) {
+		
+		dao.insertInterviewMark(map);
+		
+	}
+
+	@Override
+	public List<Map> getWrongQuizs(String id) {
+		// TODO Auto-generated method stub
+		return dao.selectInterviewMarkList(id);
+	}
+
+	@Override
+	public void deleteWrongQuiz(String quizNo) {
+		
+		dao.deleteInterviewMark(quizNo);
+	}
 }
