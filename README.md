@@ -8,7 +8,7 @@ Spring 과 MySQL을 적용하여 업그레이드한 의미 있는 프로젝트 �
 
 ## Stack
 
-Language : Java , JavaScript, Html5, Css3, SQL   
+Language : Java , JavaScript, Html5, Css3, SQL  
 Service System : Spring4, MyBatis, Apache Tomcat  
 Database : MySQL8.0  
 Tool : Eclipse, Workbench, ERMaster  
@@ -19,8 +19,8 @@ Tool : Eclipse, Workbench, ERMaster
 
 :movie_camera: **[시연영상 바로가기 클릭(2분 17초 시작)](https://www.youtube.com/watch?v=S76dEhq3IyE#t=2m17s)**
 
-![ItStudy게임 실행화면](./img/itStudy.png)
+![ItStudy게임 실행화면](./readme/itStudy.png)
 
 ## ERD
 
-![ItStudy게임 ERD](./img/itStudyERD.png)
+![ItStudy게임 ERD](./readme/itStudyERD.png)
